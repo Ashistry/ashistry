@@ -1,8 +1,4 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-echo "theme = 'ananke'" >> hugo.toml
-
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
+theme = 'ananke'
