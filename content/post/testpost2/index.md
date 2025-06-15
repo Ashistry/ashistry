@@ -6,9 +6,8 @@ image:
 math: 
 license: 
 hidden: false
-comments: true
 draft: false
 ---
 
 
-test!
+test
