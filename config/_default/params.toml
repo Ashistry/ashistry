@@ -18,7 +18,7 @@ subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 [sidebar.avatar]
 enabled = true
 local = false
-src = "avatar.png"
+src = "/avatar.png"
 
 [article]
 headingAnchor = false
@@ -102,15 +102,6 @@ repo = ""
 clientId = ""
 clientSecret = ""
 autoCreateIssue = false
-
-[comments.waline]
-serverURL = ""
-lang = ""
-visitor = ""
-avatar = ""
-emoji = ["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"]
-requiredMeta = ["name", "email", "url"]
-placeholder = ""
 
 [comments.waline.locale]
 admin = "Admin"
