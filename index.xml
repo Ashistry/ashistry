@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ashistry</title><link>https://ashistry.eu/</link><description>Recent content on Ashistry</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 15 Jun 2025 19:43:57 +0200</lastBuildDate><atom:link href="https://ashistry.eu/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction!</title><link>https://ashistry.eu/p/introduction/</link><pubDate>Sun, 15 Jun 2025 19:43:57 +0200</pubDate><guid>https://ashistry.eu/p/introduction/</guid><description>&lt;p>Hey hey hello and welcome to my personal/hobby/knowledge-base/a bit of everything blog!&lt;/p>
+&lt;p>My name is Ash and I go by they/them pronouns. I&amp;rsquo;m 21 and live in Europe.&lt;/p>
+&lt;p>My interests are many, but these are the main ones you can expect to find here:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Tech&lt;/strong> &lt;br>
+(programming, linux, single board computers, homelab, etc.)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Art,&lt;/strong>&lt;br>
+particularly crafts, but there&amp;rsquo;s some painters and digital artists I like too! I just don&amp;rsquo;t do that myself :)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Music&lt;/strong>&lt;br>
+(making, listening, theory,vocaloid, synthv, etc.)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Videogames&lt;/strong>&lt;br>
+(pokemon, touhou, minecraft, terraria, animal crossing, girls'
+frontline, azur lane when it doesn&amp;rsquo;t get overtly adult, etc.)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Amateur Radio&lt;/strong>&lt;br>
+AKA HAM radio! specifically software defined radio.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Cooking,&lt;/strong>&lt;br>
+mostly plant based, baking included&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Miscellaneous&lt;/strong>&lt;br>
+Anime/manga, SCP, stationary collecting (stickers!!)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="what-to-expect">What to expect
+&lt;/h3>&lt;p>I&amp;rsquo;ll be upfront, this is a bit of an everything-I-like sort of place. I love to yap! But you can filter by tag to see the stuff you&amp;rsquo;re interested in :)&lt;/p>
+&lt;p>I&amp;rsquo;ll post processes and results for some of my projects (such as tech projects, crafts or recipes), infodumping sessions on whatever I&amp;rsquo;m into at the moment, and much more.&lt;/p>
+&lt;p>&lt;em>If you want to link your personal website or blog on my website, let me know! The indie web is such a treasure in an age of megacorps.&lt;/em>&lt;/p></description></item><item><title>Archives</title><link>https://ashistry.eu/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://ashistry.eu/archives/</guid><description/></item><item><title>Links</title><link>https://ashistry.eu/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ashistry.eu/links/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
+&lt;p>This page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">links&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub is the world&amp;#39;s largest software development platform.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.com&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://www.typescriptlang.org&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ts-logo-128.jpg&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>image&lt;/code> field accepts both local and external images.&lt;/p></description></item><item><title>Search</title><link>https://ashistry.eu/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ashistry.eu/search/</guid><description/></item></channel></rss>
