@@ -180,12 +180,14 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cusdis_thread&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-host</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-app-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;YOURIDHERE&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageId</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;window.location.pathname&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageTitle</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;document.title&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageUrl</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;window.location.href&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .File.UniqueID }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Title }}&#34;</span>
 </span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-</span></span></code></pre></div><ol start="3">
+</span></span></code></pre></div><p>(Thank you to <a href="https://discourse.gohugo.io/t/free-and-open-source-comments-for-hugo/32940">this post on the hugo forums</a>)</p>
+<p>A bug with this I have on librewolf at least is that If you submit a comment, the widget unloads? When you reload the page it&rsquo;s back though. Man, frankly, idk. But cusdis is easy and open source so I&rsquo;m sticking with it for now.</p>
+<ol start="3">
 <li>
 <p>Replace YOURIDHERE with the app ID you received from Cusdis (found in the embedded code section).</p>
 </li>
@@ -203,7 +205,6 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span>[<span style="color:#a6e22e">outputs</span>]
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">home</span> = [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;rss&#39;</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">section</span> = [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;rss&#39;</span>]
 </span></span></code></pre></div><ol start="2">
 <li>If you want to disable rss for certain pages, add a line like this beneath our existing code:</li>
 </ol>
@@ -228,6 +229,7 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 
   
 
+  <p>Comments: (If it disappears, reload the page)</p>
 <div id="cusdis_thread" data-host="https://cusdis.com"
         data-app-id="baec687e-88b1-42de-8446-e48839c79593"
         data-page-id="ed920955f07baebb72855c50fba06e26" data-page-url="http://localhost:1313/posts/hugo-theme-tutorial/"

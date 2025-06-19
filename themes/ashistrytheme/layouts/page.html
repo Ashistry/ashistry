@@ -8,6 +8,7 @@
 
   {{ .Content }}
   {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <p>Comments: (If it disappears, reload the page)</p>
 <div id="cusdis_thread" data-host="https://cusdis.com"
         data-app-id="baec687e-88b1-42de-8446-e48839c79593"
         data-page-id="{{ .File.UniqueID }}" data-page-url="{{ .Permalink }}"

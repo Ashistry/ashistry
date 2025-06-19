@@ -221,6 +221,9 @@ First, decide on your comment provider. Disqus is a popular choice and hugo ship
 ></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 ```
+(Thank you to [this post on the hugo forums](https://discourse.gohugo.io/t/free-and-open-source-comments-for-hugo/32940))
+
+A bug with this I have on librewolf at least is that If you submit a comment, the widget unloads? When you reload the page it's back though. Man, frankly, idk. But cusdis is easy and open source so I'm sticking with it for now.
 
 3. Replace YOURIDHERE with the app ID you received from Cusdis (found in the embedded code section).
 
@@ -237,7 +240,6 @@ Hugo ships with RSS support. To enable it, do the following:
 ```TOML
 [outputs]
   home = ['html', 'rss']
-  section = ['html', 'rss']
 ```
 
 2. If you want to disable rss for certain pages, add a line like this beneath our existing code:
