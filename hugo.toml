@@ -2,3 +2,7 @@ baseURL = 'https://www.ashistry.eu'
 languageCode = 'en-us'
 title = 'Ashistry'
 theme='ashistrytheme'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
