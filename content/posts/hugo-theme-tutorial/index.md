@@ -79,7 +79,6 @@ We can find info about how to create and reference layouts in the [hugo layout d
 
 Read at least the Introduction and Template Types section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.
 
-
 ## 2.2 Editing HTML
 
 home.html is the "main" file for the `{{main}}` definition. Let's add something and see it change.
@@ -216,9 +215,9 @@ First, decide on your comment provider. Disqus is a popular choice and hugo ship
   id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="YOURIDHERE"
-  pageId="window.location.pathname"
-  pageTitle="document.title"
-  pageUrl="window.location.href"
+  data-page-id="{{ .File.UniqueID }}"
+  data-page-url="{{ .Permalink }}"
+  data-page-title="{{ .Title }}"
 ></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 ```
@@ -233,7 +232,8 @@ First, decide on your comment provider. Disqus is a popular choice and hugo ship
 
 Hugo ships with RSS support. To enable it, do the following:
 
-1.  Go to your theme's hugo.toml and add the following code : 
+1.  Go to your theme's hugo.toml and add the following code :
+
 ```TOML
 [outputs]
   home = ['html', 'rss']
@@ -241,15 +241,17 @@ Hugo ships with RSS support. To enable it, do the following:
 ```
 
 2. If you want to disable rss for certain pages, add a line like this beneath our existing code:
+
 ```TOML
  taxonomy = ['html']
 ```
+
 This explicitly sets the output for taxonomy (in this example) to just HTML. I'll be real, I don't know the fine details of this.
 
 Hugo has a built in RSS template. If you want to change it, add a home.rss.xml file and a section.rss.xml file in your layouts folder (and other types, as needed.)
 
+3. To include a reference to your feed in your site's `<head>` tag, add the following to head.html :
 
-3. To include a reference to your feed in your site's ```<head>``` tag, add the following to head.html :
 ```go
 {{ with .OutputFormats.Get "rss" }}
   {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
