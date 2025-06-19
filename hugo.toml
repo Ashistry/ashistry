@@ -1,0 +1,4 @@
+baseURL = 'https://www.ashistry.eu'
+languageCode = 'en-us'
+title = 'Ashistry'
+theme='ashistrytheme'
