@@ -308,7 +308,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
-Before we sync to github, go to your repository settings. Here we will change the branch for our pages site to 'gh-pages'. If you're comfortable doing so, give it a test by syncing now.
+Before we sync to github, go to your repository settings. Here we will change the branch for our pages site to 'gh-pages'. If you're comfortable doing so, give it a test by syncing now (You may have to fiddle a bit with repositories to be allowed to publish to an existing github repo if you have not been working in it)
 
 
 # 7. Now what?
