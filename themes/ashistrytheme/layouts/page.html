@@ -1,12 +1,19 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<h1>{{ .Title }}</h1>
+<h1></h1>
 
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
+$dateHuman := .Date | time.Format ":date_long" }}
+<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-  
- <div id="cusdis" data-app-id="c5c4c3d6-867b-41e8-a465-075062cce3e2" data-page-id="{{ .Permalink }}" data-page-title="{{ .Title }}" data-page-url="{{ .Permalink }}"></div>
+{{ .Content }} {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+<div
+  id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="c5c4c3d6-867b-41e8-a465-075062cce3e2"
+  pageId="window.location.pathname"
+  pageTitle="document.title"
+  pageUrl="window.location.href"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 {{ end }}

@@ -35,13 +35,13 @@
   </header>
   <main>
     
-  <h1>Hugo Theme Tutorial</h1>
+<h1>Hugo Theme Tutorial</h1>
+<h1></h1>
 
-  
-  
-  <time datetime="2025-06-18T17:22:06&#43;02:00">June 18, 2025</time>
+ 
+<time datetime="2025-06-18T17:22:06&#43;02:00">June 18, 2025</time>
 
-  <p>Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my hugo site. I&rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste <em>fast</em>.</p>
+<p>Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my hugo site. I&rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste <em>fast</em>.</p>
 <p>So in this guide, you will follow along with me as I create a theme from scratch.</p>
 <p>I will assume you have basic knowledge of the following:</p>
 <ul>
@@ -66,8 +66,8 @@ Go templates are not something I am hugely comfortable with myself, but it isn&r
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new theme yourthemename
 </span></span></code></pre></div><p>I have chosen &ldquo;ashistrytheme&rdquo; as my name (very creative, right?).</p>
 <p>Do your usual setup in your <strong>site&rsquo;s</strong> hugo.toml (aka its frontmatter) and set the theme to your theme.</p>
-<h2 id="12-npm-setup">1.2. npm setup</h2>
-<p>Now let&rsquo;s set up npm. You have a few options here!</p>
+<h2 id="12-optional-but-reccomended-npm-setup">1.2. (optional but reccomended) npm setup</h2>
+<p>Want to work with additional dependencies such as CSS superset Sass? let&rsquo;s set up npm. You have a few options here!</p>
 <ul>
 <li>Set up npm in your site&rsquo;s root directory. This is best if your theme is not for publishing (although you can always move stuff around later).
 This is the method I will be using, as it allows us to easily set up npm scripts for build tasks we may want (such as sass or TypeScript).</li>
@@ -86,10 +86,10 @@ These are, well, layouts for your site.</p>
 <code>{{main}}</code>
 Which as you know is also part of an HTML structure.</p>
 <p>We can find info about how to create and reference layouts in the <a href="https://gohugo.io/templates/">hugo layout documentation.</a></p>
-<p>Read at least the Introduction section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.</p>
+<p>Read at least the Introduction and Template Types section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.</p>
 <h2 id="22-editing-html">2.2 Editing HTML</h2>
 <p>home.html is the &ldquo;main&rdquo; file for the <code>{{main}}</code> definition. Let&rsquo;s add something and see it change.</p>
-<p>I will put a h1 right after <code>{{ define &quot;main&quot; }}</code>, but before <code>{{.Content}}</code></p>
+<p>I will put an h1 right after <code>{{ define &quot;main&quot; }}</code>, but before <code>{{.Content}}</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">define</span> <span style="color:#e6db74">&#34;main&#34;</span> }}
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">h1</span>&gt;<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">h1</span>&gt;
 </span></span><span style="display:flex;"><span>  {{ .<span style="color:#a6e22e">Content</span> }}
@@ -168,32 +168,25 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 <h1 id="62-comments">6.2. Comments</h1>
 <p>First, decide on your comment provider. Disqus is a popular choice and hugo ships with support for it, but here I will be using <a href="https://cusdis.com/">Cusdis</a>.</p>
 <ol>
-<li>Sign up for Cusdis.</li>
-<li>Add this directly to your baseof.html, right before the closing body tag:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span> <span style="color:#66d9ef">async</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><ol start="3">
-<li>Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, in my case before the opening tag for the footer in the baseof.html file:</li>
+<li>
+<p>Sign up for Cusdis.</p>
+</li>
+<li>
+<p>Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, for posts (where you most likely want it) this would be in page.html.</p>
+</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cusdis&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-app-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;YOUR_APP_ID&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Title }}&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cusdis_thread&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-host</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-app-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;YOURIDHERE&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageId</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;window.location.pathname&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageTitle</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;document.title&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageUrl</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;window.location.href&#34;</span>
 </span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><ol start="4">
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><ol start="3">
 <li>
-<p>Replace YOUR_APP_ID with the APP_ID you received from Cusdis (found in the embedded code section).</p>
-</li>
-<li>
-<p>Add the following to the frontmatter of archetypes you want comments on:</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span><span style="color:#a6e22e">comments</span>=<span style="color:#66d9ef">true</span>
-</span></span></code></pre></div><ol start="6">
-<li>
-<p>You won&rsquo;t see Cusdis on your development server as it requires a publicly accessible url. however, if you see some empty spage rendered in a post with comments=true, and a 404 error trying to fetch Cusdis related things in your browser console&rsquo;s network section, you should be good!</p>
+<p>Replace YOURIDHERE with the app ID you received from Cusdis (found in the embedded code section).</p>
 </li>
 <li>
 <p>Consider donating to Cusdis for their free, open source service. And if you need more than 100 comments a month, consider their cloud pro plan, which is only 12 dollars a year (not an ad!) or host your own instance for free.</p>
@@ -214,7 +207,7 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 <li>If you want to disable rss for certain pages, add a line like this beneath our existing code:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span> <span style="color:#a6e22e">taxonomy</span> = [<span style="color:#e6db74">&#39;html&#39;</span>]
-</span></span></code></pre></div><p>This explicitly sets the output to taxonomy (in this example) to just HTML.</p>
+</span></span></code></pre></div><p>This explicitly sets the output for taxonomy (in this example) to just HTML. I&rsquo;ll be real, I don&rsquo;t know the fine details of this.</p>
 <p>Hugo has a built in RSS template. If you want to change it, add a home.rss.xml file and a section.rss.xml file in your layouts folder (and other types, as needed.)</p>
 <ol start="3">
 <li>To include a reference to your feed in your site&rsquo;s <code>&lt;head&gt;</code> tag, add the following to head.html :</li>
@@ -226,54 +219,27 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 <li>For ease of access, add an RSS menu item or something like that to your site pointing to <a href="https://www.yourdomainname.whatever/index.xml">www.yourdomainname.whatever/index.xml</a> .</li>
 </ol>
 <p>Now we have an RSS feed!</p>
-<h1 id="64-deployment-workflow-optional">6.4 Deployment workflow (optional)</h1>
-<p>If you host your site on Github pages like me, we can create a workflow for it to be deployed to our pages site when the repo is synced to Github.</p>
-<p>Github Actions is not my specialty by any means. But I will try my best to create something semi competent. I&rsquo;ll be upfront, I used an LLM to create the base and then tinkered until I was happy.</p>
-<p>In your <strong>site</strong>&rsquo;s root directory, create a folder called <code>.github</code>, and in that create a folder called <code>workflows</code>. Now create a file called <code>deploy.yml</code>.</p>
-<p>Paste this code in there:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo Site to GitHub Pages</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main </span> <span style="color:#75715e"># Change this if your default branch is different</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout code</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Hugo</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>  <span style="color:#75715e"># You can specify a version if needed</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">github_token</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
-</span></span></code></pre></div><p>Before we sync to github, go to your repository settings. Here we will change the branch for our pages site to &lsquo;gh-pages&rsquo;. If you&rsquo;re comfortable doing so, give it a test by syncing now (You may have to fiddle a bit with repositories to be allowed to publish to an existing github repo if you have not been working in it)</p>
+<h1 id="64-github-deployment-workflow-optional">6.4 Github deployment workflow (optional)</h1>
+<p>Please refer to the official hugo <a href="https://gohugo.io/host-and-deploy/host-on-github-pages/?ref=curiousmints.com">tutorial</a>.</p>
 <h1 id="7-now-what">7. Now what?</h1>
 <p>Now is the time for you to explore on your own and design your theme with the tools I&rsquo;ve given you. Have fun, and good luck!</p>
 <p>P.S.: Remember the documentation for specific needs!</p>
+ 
 
-  
-
-  
- <div id="cusdis" data-app-id="c5c4c3d6-867b-41e8-a465-075062cce3e2" data-page-id="http://localhost:1313/posts/hugo-theme-tutorial/" data-page-title="Hugo Theme Tutorial" data-page-url="http://localhost:1313/posts/hugo-theme-tutorial/"></div>
+<div
+  id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="c5c4c3d6-867b-41e8-a465-075062cce3e2"
+  pageId="window.location.pathname"
+  pageTitle="document.title"
+  pageUrl="window.location.href"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
   </main>
   <footer>
     <p>Copyright 2025-2025 <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a></p>
 
   </footer>
-  <script src="https://cusdis.com/js/cusdis.es.js" async></script>
 </body>
 </html>

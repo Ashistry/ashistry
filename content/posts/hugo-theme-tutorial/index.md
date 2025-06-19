@@ -49,9 +49,9 @@ I have chosen "ashistrytheme" as my name (very creative, right?).
 
 Do your usual setup in your **site's** hugo.toml (aka its frontmatter) and set the theme to your theme.
 
-## 1.2. npm setup
+## 1.2. (optional but reccomended) npm setup
 
-Now let's set up npm. You have a few options here!
+Want to work with additional dependencies such as CSS superset Sass? let's set up npm. You have a few options here!
 
 - Set up npm in your site's root directory. This is best if your theme is not for publishing (although you can always move stuff around later).
   This is the method I will be using, as it allows us to easily set up npm scripts for build tasks we may want (such as sass or TypeScript).
@@ -77,13 +77,14 @@ Which as you know is also part of an HTML structure.
 
 We can find info about how to create and reference layouts in the [hugo layout documentation.](https://gohugo.io/templates/)
 
-Read at least the Introduction section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.
+Read at least the Introduction and Template Types section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.
+
 
 ## 2.2 Editing HTML
 
 home.html is the "main" file for the `{{main}}` definition. Let's add something and see it change.
 
-I will put a h1 right after `{{ define "main" }}`, but before `{{.Content}}`
+I will put an h1 right after `{{ define "main" }}`, but before `{{.Content}}`
 
 ```GO
 {{ define "main" }}
@@ -207,36 +208,26 @@ I'll go over a few common functionalities (as I'm calling them) for your site.
 First, decide on your comment provider. Disqus is a popular choice and hugo ships with support for it, but here I will be using [Cusdis](https://cusdis.com/).
 
 1. Sign up for Cusdis.
-2. Add this directly to your baseof.html, right before the closing body tag:
 
-```js
-<script src="https://cusdis.com/js/cusdis.es.js" async></script>
-```
-
-3. Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, in my case before the opening tag for the footer in the baseof.html file:
+2. Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, for posts (where you most likely want it) this would be in page.html.
 
 ```html
 <div
-  id="cusdis"
-  data-app-id="YOUR_APP_ID"
-  data-page-id="{{ .Permalink }}"
-  data-page-title="{{ .Title }}"
-  data-page-url="{{ .Permalink }}"
+  id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="YOURIDHERE"
+  pageId="window.location.pathname"
+  pageTitle="document.title"
+  pageUrl="window.location.href"
 ></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 ```
 
-4. Replace YOUR_APP_ID with the APP_ID you received from Cusdis (found in the embedded code section).
+3. Replace YOURIDHERE with the app ID you received from Cusdis (found in the embedded code section).
 
-5. Add the following to the frontmatter of archetypes you want comments on:
-```TOML
-comments=true
-```
+4. Consider donating to Cusdis for their free, open source service. And if you need more than 100 comments a month, consider their cloud pro plan, which is only 12 dollars a year (not an ad!) or host your own instance for free.
 
-6. You won't see Cusdis on your development server as it requires a publicly accessible url. however, if you see some empty spage rendered in a post with comments=true, and a 404 error trying to fetch Cusdis related things in your browser console's network section, you should be good!
-
-7. Consider donating to Cusdis for their free, open source service. And if you need more than 100 comments a month, consider their cloud pro plan, which is only 12 dollars a year (not an ad!) or host your own instance for free.
-
-8. You can moderate your comments (required, they won't be published otherwise) in their dashboard.
+5. You can moderate your comments (required, they won't be published otherwise) in their dashboard.
 
 # 6.3 RSS
 
@@ -253,7 +244,7 @@ Hugo ships with RSS support. To enable it, do the following:
 ```TOML
  taxonomy = ['html']
 ```
-This explicitly sets the output to taxonomy (in this example) to just HTML.
+This explicitly sets the output for taxonomy (in this example) to just HTML. I'll be real, I don't know the fine details of this.
 
 Hugo has a built in RSS template. If you want to change it, add a home.rss.xml file and a section.rss.xml file in your layouts folder (and other types, as needed.)
 
@@ -269,47 +260,9 @@ Hugo has a built in RSS template. If you want to change it, add a home.rss.xml f
 
 Now we have an RSS feed!
 
-# 6.4 Deployment workflow (optional)
+# 6.4 Github deployment workflow (optional)
 
-If you host your site on Github pages like me, we can create a workflow for it to be deployed to our pages site when the repo is synced to Github. 
-
-Github Actions is not my specialty by any means. But I will try my best to create something semi competent. I'll be upfront, I used an LLM to create the base and then tinkered until I was happy.
-
-In your **site**'s root directory, create a folder called ```.github```, and in that create a folder called ```workflows```. Now create a file called ```deploy.yml```.
-
-Paste this code in there:
-```yaml
-name: Deploy Hugo Site to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main  # Change this if your default branch is different
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'  # You can specify a version if needed
-
-      - name: Build
-        run: hugo --minify
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-```
-Before we sync to github, go to your repository settings. Here we will change the branch for our pages site to 'gh-pages'. If you're comfortable doing so, give it a test by syncing now (You may have to fiddle a bit with repositories to be allowed to publish to an existing github repo if you have not been working in it)
-
+Please refer to the official hugo [tutorial](https://gohugo.io/host-and-deploy/host-on-github-pages/?ref=curiousmints.com).
 
 # 7. Now what?
 

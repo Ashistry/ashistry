@@ -1,6 +1,5 @@
 {{ define "main" }}
   {{ .Content }}
-  <h1>test</h1>
   {{ range site.RegularPages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
