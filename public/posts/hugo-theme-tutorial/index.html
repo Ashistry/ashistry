@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Hugo Theme Tutorial | Ashistry</title>
+
+      <link rel="stylesheet" href="/css/main.css">
+
+
+
+        <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Ashistry</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Hugo Theme Tutorial</h1>
+
+  
+  
+  <time datetime="2025-06-18T17:22:06&#43;02:00">June 18, 2025</time>
+
+  <p>Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my hugo site. I&rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste <em>fast</em>.</p>
+<p>So in this guide, you will follow along with me as I create a theme from scratch.</p>
+<p>I will assume you have basic knowledge of the following:</p>
+<ul>
+<li>HTML</li>
+<li>JavaScript</li>
+<li>CSS</li>
+<li>Web Development principles</li>
+<li>npm</li>
+<li>The command line</li>
+<li>How to set up a hugo site</li>
+</ul>
+<p>You may know that hugo also uses Go templating.
+Go templates are not something I am hugely comfortable with myself, but it isn&rsquo;t too difficult. You can learn about it <a href="https://golangdocs.com/templates-in-golang">here</a>.</p>
+<p>Let&rsquo;s do this!</p>
+<h2 id="11-site-setup">1.1. Site setup</h2>
+<p>We will be creating a new hugo site for ease of development. If you want you can simply copy over your posts to the new site, but unimplemented functions will not work. A new hugo theme comes with some example posts by default, you can delete these from yourthemename/content/posts if you want.</p>
+<p>Create a new site:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site yoursitename
+</span></span></code></pre></div><p>Optionally, initialize a git repository.</p>
+<p>Now open the created folder in the editor of your choice.</p>
+<p>Then we create a new theme with this command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new theme yourthemename
+</span></span></code></pre></div><p>I have chosen &ldquo;ashistrytheme&rdquo; as my name (very creative, right?).</p>
+<p>Do your usual setup in your <strong>site&rsquo;s</strong> hugo.toml (aka its frontmatter) and set the theme to your theme.</p>
+<h2 id="12-npm-setup">1.2. npm setup</h2>
+<p>Now let&rsquo;s set up npm. You have a few options here!</p>
+<ul>
+<li>Set up npm in your site&rsquo;s root directory. This is best if your theme is not for publishing (although you can always move stuff around later).
+This is the method I will be using, as it allows us to easily set up npm scripts for build tasks we may want (such as sass or TypeScript).</li>
+<li>Set up npm in your theme&rsquo;s root directory. This is best if you have plans of publishing your theme.</li>
+<li>Set up a monorepo for both options. (advanced)</li>
+</ul>
+<p>My guide is specifically for the first option. If you want a publishable theme, you can still follow along, but will want to use more Go templating and use some of your own knowledge to fill in gaps and change things.
+This is the time to install any dependencies you want to use.
+When using git, don&rsquo;t forget to add a .gitignore for your node_modules folder.</p>
+<h2 id="21-exploring-layouts">2.1 Exploring layouts</h2>
+<p>Let&rsquo;s run our development server once so everything we want to look at is generated.</p>
+<p>A hugo theme consists largely of <strong>layouts</strong>.
+These are, well, layouts for your site.</p>
+<p>All the partials (layouts/_partials) are parts of a basic HTML structure and are referenced in baseof.html.</p>
+<p>All the non-partials are assigned to
+<code>{{main}}</code>
+Which as you know is also part of an HTML structure.</p>
+<p>We can find info about how to create and reference layouts in the <a href="https://gohugo.io/templates/">hugo layout documentation.</a></p>
+<p>Read at least the Introduction section (And at time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.</p>
+<h2 id="22-editing-html">2.2 Editing HTML</h2>
+<p>home.html is the &ldquo;main&rdquo; file for the <code>{{main}}</code> definition. Let&rsquo;s add something and see it change.</p>
+<p>I will put a h1 right after <code>{{ define &quot;main&quot; }}</code>, but before <code>{{.Content}}</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">define</span> <span style="color:#e6db74">&#34;main&#34;</span> }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">h1</span>&gt;<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">h1</span>&gt;
+</span></span><span style="display:flex;"><span>  {{ .<span style="color:#a6e22e">Content</span> }}
+</span></span><span style="display:flex;"><span>  {{ <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">site</span>.<span style="color:#a6e22e">RegularPages</span> }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#a6e22e">h2</span>&gt;&lt;<span style="color:#a6e22e">a</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;{{ .<span style="color:#a6e22e">LinkTitle</span> }}&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">a</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ .<span style="color:#a6e22e">Summary</span> }}
+</span></span><span style="display:flex;"><span>  {{ <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">end</span> }}
+</span></span></code></pre></div><p>Wow! there it is! This is how you add html to layouts. Use common sense when placing things and what file to place them in, and also just change things and see what it does. Of course, there&rsquo;s always the layouts documentation.</p>
+<h2 id="3-the-css">3. The CSS</h2>
+<p>HTML is cool and all, but now it&rsquo;s time for some pizazz.
+CSS for your theme goes in yourtheme/assets/css.</p>
+<p>This is pretty straightforward. You know how CSS works.</p>
+<p>If you add a second file (such as two.css), it will not be applied by default. We will change css.html to a loop structure, like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">slice</span> <span style="color:#e6db74">&#34;css/main.css&#34;</span> <span style="color:#e6db74">&#34;css/two.css&#34;</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#66d9ef">range</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> <span style="color:#f92672">:=</span> . }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> }}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span>=<span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">else</span> }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">minify</span> | <span style="color:#a6e22e">fingerprint</span> }}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span>=<span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span> <span style="color:#a6e22e">integrity</span>=<span style="color:#e6db74">&#34;{{ .Data.Integrity }}&#34;</span> <span style="color:#a6e22e">crossorigin</span>=<span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span></code></pre></div><p>Feel free to copy this over. Add any CSS files you add into the first line.</p>
+<h2 id="4-the-javascript">4. The JavaScript</h2>
+<p>Honestly? Same story as the CSS. JavaScript files go in yourthemename/assets/js.</p>
+<p>To add multiple files, we need to edit layouts/_partials/head/js.html.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">slice</span> <span style="color:#e6db74">&#34;js/main.js&#34;</span> <span style="color:#e6db74">&#34;js/another.js&#34;</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#66d9ef">range</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> <span style="color:#f92672">:=</span> . }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">opts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dict</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;minify&#34;</span> (<span style="color:#a6e22e">not</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;sourceMap&#34;</span> (<span style="color:#a6e22e">cond</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> <span style="color:#e6db74">&#34;external&#34;</span> <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;targetPath&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span>
+</span></span><span style="display:flex;"><span>    }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">js</span>.<span style="color:#a6e22e">Build</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">opts</span> }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> }}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;
+</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">else</span> }}
+</span></span><span style="display:flex;"><span>        {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">fingerprint</span> }}
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span> <span style="color:#a6e22e">integrity</span>=<span style="color:#e6db74">&#34;{{ .Data.Integrity }}&#34;</span> <span style="color:#a6e22e">crossorigin</span>=<span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;
+</span></span><span style="display:flex;"><span>        {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span></code></pre></div><p>Add files you create into the first line.</p>
+<h1 id="5-content-archetypes">5. Content archetypes</h1>
+<p>When you create new content in the posts/ directory, hugo will look for the posts.md <strong>archetype</strong>. An archetype is a template for your content.
+If there is no posts.md, it will default to default.md.</p>
+<p>Similarly, you can create archetypes for other content types which will follow the same defaulting behaviour.</p>
+<p>The frontmatter (what we will be editing) can be TOML, YAML or JSON.</p>
+<p>Try creating posts.md and adding tags to the frontmatter section there now! Like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#e6db74">&#39;{{ .Date }}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">draft</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> =  <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span></code></pre></div><p>And create a new post with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content posts/yourpostname.md
+</span></span></code></pre></div><p>If everything went right, it should contain your added field.</p>
+<p>For more info about what you can put here, the hugo documentation&rsquo;s <a href="https://gohugo.io/content-management/front-matter/">front matter page</a> will help.</p>
+<p>The archetype used depends on the subdirectory passed to the new content command. Here we passed posts/, so it used the posts.md archetype.</p>
+<p>But you can also specify the archetype to use like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content --kind tutorials posts/yourpostname.md
+</span></span></code></pre></div><p>This will use a tutorials.md archetype, if it exists. If not, it will go to posts.md.</p>
+<h1 id="61-functionalities">6.1. Functionalities</h1>
+<p>I&rsquo;ve taught you how to make basic edits to your theme. Now, what if, for example, you wanted to add support for comments? or another &ldquo;functionality&rdquo;?
+I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for your site.</p>
+<h1 id="62-comments">6.2. Comments</h1>
+<p>First, decide on your comment provider. Disqus is a popular choice and hugo ships with support for it, but here I will be using <a href="https://cusdis.com/">Cusdis</a>.</p>
+<ol>
+<li>Sign up for Cusdis.</li>
+<li>Add this directly to your baseof.html, right before the closing body tag:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span> <span style="color:#66d9ef">async</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><ol start="3">
+<li>Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, in my case before the opening tag for the footer in the baseof.html file:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cusdis&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-app-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;YOUR_APP_ID&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Title }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
+</span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><ol start="4">
+<li>
+<p>Replace YOUR_APP_ID with the APP_ID you received from Cusdis (found in the embedded code section).</p>
+</li>
+<li>
+<p>Add the following to the frontmatter of archetypes you want comments on:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span><span style="color:#a6e22e">comments</span>=<span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><ol start="6">
+<li>
+<p>You won&rsquo;t see Cusdis on your development server as it requires a publicly accessible url. however, if you see some empty spage rendered in a post with comments=true, and a 404 error trying to fetch Cusdis related things in your browser console&rsquo;s network section, you should be good!</p>
+</li>
+<li>
+<p>Consider donating to Cusdis for their free, open source service. And if you need more than 100 comments a month, consider their cloud pro plan, which is only 12 dollars a year (not an ad!) or host your own instance for free.</p>
+</li>
+<li>
+<p>You can moderate your comments (required, they won&rsquo;t be published otherwise) in their dashboard.</p>
+</li>
+</ol>
+<h1 id="63-rss">6.3 RSS</h1>
+<p>Hugo ships with RSS support. To enable it, do the following:</p>
+<ol>
+<li>Go to your theme&rsquo;s hugo.toml and add the following code :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span>[<span style="color:#a6e22e">outputs</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">home</span> = [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;rss&#39;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">section</span> = [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;rss&#39;</span>]
+</span></span></code></pre></div><ol start="2">
+<li>If you want to disable rss for certain pages, add a line like this beneath our existing code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span> <span style="color:#a6e22e">taxonomy</span> = [<span style="color:#e6db74">&#39;html&#39;</span>]
+</span></span></code></pre></div><p>This explicitly sets the output to taxonomy (in this example) to just HTML.</p>
+<p>Hugo has a built in RSS template. If you want to change it, add a home.rss.xml file and a section.rss.xml file in your layouts folder (and other types, as needed.)</p>
+<ol start="3">
+<li>To include a reference to your feed in your site&rsquo;s <code>&lt;head&gt;</code> tag, add the following to head.html :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">with</span> .<span style="color:#a6e22e">OutputFormats</span>.<span style="color:#a6e22e">Get</span> <span style="color:#e6db74">&#34;rss&#34;</span> }}
+</span></span><span style="display:flex;"><span>  {{ <span style="color:#a6e22e">printf</span> <span style="color:#e6db74">`&lt;link rel=%q type=%q href=%q title=%q&gt;`</span> .<span style="color:#a6e22e">Rel</span> .<span style="color:#a6e22e">MediaType</span>.<span style="color:#a6e22e">Type</span> .<span style="color:#a6e22e">Permalink</span> <span style="color:#a6e22e">site</span>.<span style="color:#a6e22e">Title</span> | <span style="color:#a6e22e">safeHTML</span> }}
+</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">end</span> }}
+</span></span></code></pre></div><ol start="4">
+<li>For ease of access, add an RSS menu item or something like that to your site pointing to <a href="https://www.yourdomainname.whatever/index.xml">www.yourdomainname.whatever/index.xml</a> .</li>
+</ol>
+<p>Now we have an RSS feed!</p>
+<h1 id="64-deployment-workflow-optional">6.4 Deployment workflow (optional)</h1>
+<p>If you host your site on Github pages like me, we can create a workflow for it to be deployed to our pages site when the repo is synced to Github.</p>
+<p>Github Actions is not my specialty by any means. But I will try my best to create something semi competent. I&rsquo;ll be upfront, I used an LLM to create the base and then tinkered until I was happy.</p>
+<p>In your <strong>site</strong>&rsquo;s root directory, create a folder called <code>.github</code>, and in that create a folder called <code>workflows</code>. Now create a file called <code>deploy.yml</code>.</p>
+<p>Paste this code in there:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo Site to GitHub Pages</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main </span> <span style="color:#75715e"># Change this if your default branch is different</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout code</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>  <span style="color:#75715e"># You can specify a version if needed</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">github_token</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span></code></pre></div><p>Before we sync to github, go to your repository settings. Here we will change the branch for our pages site to &lsquo;gh-pages&rsquo;. If you&rsquo;re comfortable doing so, give it a test by syncing now (You may have to fiddle a bit with repositories to be allowed to publish to an existing github repo if you have not been working in it)</p>
+<h1 id="7-now-what">7. Now what?</h1>
+<p>Now is the time for you to explore on your own and design your theme with the tools I&rsquo;ve given you. Have fun, and good luck!</p>
+<p>P.S.: Remember the documentation for specific needs!</p>
+
+  
+
+  
+ <div id="cusdis" data-app-id="c5c4c3d6-867b-41e8-a465-075062cce3e2" data-page-id="http://localhost:1313/posts/hugo-theme-tutorial/" data-page-title="Hugo Theme Tutorial" data-page-url="http://localhost:1313/posts/hugo-theme-tutorial/"></div>
+
+  </main>
+  <footer>
+    <p>Copyright 2025-2025 <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a></p>
+
+  </footer>
+  <script src="https://cusdis.com/js/cusdis.es.js" async></script>
+</body>
+</html>
