@@ -26,19 +26,19 @@ code {
   align-items: center;
 }
 
+
 #main-container {
-  /* Makes posts wrap */
-  max-width: 700px; /* Optional: Set a max width */
-  margin: 0 auto; /* Center the preview */
-  overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
-  word-wrap: break-word; /* For older browsers */
-  hyphens: auto; /* Adds hyphenation where appropriate */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 2px solid #eb6894;
-  padding: 10px;
-    border-radius: 10px; /* Rounded corners for top-left and top-right */
+    max-width: 700px; /* Set a max width */
+    margin: 0 auto; /* Center the preview */
+    overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
+    word-wrap: break-word; /* For older browsers */
+    hyphens: auto; /* Adds hyphenation where appropriate */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #eb6894;
+    border-top: none; /* Remove the top border to avoid double borders */
+    padding: 10px;
 }
 
 #menu-container {
@@ -77,14 +77,16 @@ code {
   align-items: center;
   padding-bottom: 10px;
 }
-
 #header-container {
     border: 2px solid #eb6894;
-    border-radius: 10px; /* Rounded corners for top-left and top-right */
+    width: 100%; /* Set width to 100% to match the main container */
+    max-width: 700px; /* Match the max width of the main container */
+    padding: 10px;
     display: flex;
-
+    justify-content: center;
+    margin: 0 auto; /* Center the header container */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
 }
-
 
 
 // Dark mode
