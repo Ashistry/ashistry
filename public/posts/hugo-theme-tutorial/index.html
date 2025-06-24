@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Hugo Theme Tutorial | Ashistry</title>
 
@@ -12,29 +15,39 @@
         <script src="/js/main.js"></script>
 
 
-</head>
-<body>
-  <header>
-    <h1>Ashistry</h1>
-
+  </head>
+  <body>
+    <div id="body-container">
+      <div id="header-container">
+      <header>
+ <div id=title-container><h1>Ashistry</h1></div> 
+  <div id=menu-container>
   <nav>
     <ul>
     <li>
       <a href="/">Home</a>
     </li>
     <li>
-      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
-    </li>
-    <li>
       <a href="/tags/">Tags</a>
     </li>
+    <li>
+      <a href="/posts/index.xml">RSS</a>
+    </li>
+  </div>
+  <div id="select-container">
+  <select id="colorSchemeDropdown" name="colorSchemeDropdown" aria-label="colorSchemeDropdown">
+    <option value="lightMode">light mode</option>
+    <option value="darkMode">dark mode</option>
+    <option value="highContrast">high contrast</option>
+</select>
+</div>
     </ul>
   </nav>
-
-
-  </header>
-  <main>
-    
+ </div>
+</header>
+      </div>
+      <div id="main-container">
+        <main>
   <h1>Hugo Theme Tutorial</h1>
   <h1></h1>
 
@@ -60,11 +73,11 @@ Go templates are not something I am hugely comfortable with myself, but it isn&r
 <h2 id="11-site-setup">1.1. Site setup</h2>
 <p>We will be creating a new hugo site for ease of development. If you want you can simply copy over your posts to the new site, but unimplemented functions will not work. A new hugo theme comes with some example posts by default, you can delete these from yourthemename/content/posts if you want.</p>
 <p>Create a new site:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site yoursitename
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site yoursitename
 </span></span></code></pre></div><p>Optionally, initialize a git repository.</p>
 <p>Now open the created folder in the editor of your choice.</p>
 <p>Then we create a new theme with this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new theme yourthemename
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new theme yourthemename
 </span></span></code></pre></div><p>I have chosen &ldquo;ashistrytheme&rdquo; as my name (very creative, right?).</p>
 <p>Do your usual setup in your <strong>site&rsquo;s</strong> hugo.toml (aka its frontmatter) and set the theme to your theme.</p>
 <h2 id="12-optional-but-reccomended-npm-setup">1.2. (optional but reccomended) npm setup</h2>
@@ -91,57 +104,57 @@ Which as you know is also part of an HTML structure.</p>
 <h2 id="22-editing-html">2.2 Editing HTML</h2>
 <p>home.html is the &ldquo;main&rdquo; file for the <code>{{main}}</code> definition. Let&rsquo;s add something and see it change.</p>
 <p>I will put an h1 right after <code>{{ define &quot;main&quot; }}</code>, but before <code>{{.Content}}</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">define</span> <span style="color:#e6db74">&#34;main&#34;</span> }}
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">h1</span>&gt;<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">h1</span>&gt;
-</span></span><span style="display:flex;"><span>  {{ .<span style="color:#a6e22e">Content</span> }}
-</span></span><span style="display:flex;"><span>  {{ <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">site</span>.<span style="color:#a6e22e">RegularPages</span> }}
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#a6e22e">h2</span>&gt;&lt;<span style="color:#a6e22e">a</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;{{ .<span style="color:#a6e22e">LinkTitle</span> }}&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">a</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">h2</span>&gt;
-</span></span><span style="display:flex;"><span>    {{ .<span style="color:#a6e22e">Summary</span> }}
-</span></span><span style="display:flex;"><span>  {{ <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">end</span> }}
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{ define <span style="color:#5af78e">&#34;main&#34;</span> }}
+</span></span><span style="display:flex;"><span>&lt;h1&gt;test&lt;<span style="color:#ff6ac1">/</span>h1&gt;
+</span></span><span style="display:flex;"><span>  {{ .Content }}
+</span></span><span style="display:flex;"><span>  {{ <span style="color:#ff6ac1">range</span> site.RegularPages }}
+</span></span><span style="display:flex;"><span>    &lt;h2&gt;&lt;a href=<span style="color:#5af78e">&#34;{{ .RelPermalink }}&#34;</span>&gt;{{ .LinkTitle }}&lt;<span style="color:#ff6ac1">/</span>a&gt;&lt;<span style="color:#ff6ac1">/</span>h2&gt;
+</span></span><span style="display:flex;"><span>    {{ .Summary }}
+</span></span><span style="display:flex;"><span>  {{ end }}
+</span></span><span style="display:flex;"><span>{{ end }}
 </span></span></code></pre></div><p>Wow! there it is! This is how you add html to layouts. Use common sense when placing things and what file to place them in, and also just change things and see what it does. Of course, there&rsquo;s always the layouts documentation.</p>
 <h2 id="3-the-css">3. The CSS</h2>
 <p>HTML is cool and all, but now it&rsquo;s time for some pizazz.
 CSS for your theme goes in yourtheme/assets/css.</p>
 <p>This is pretty straightforward. You know how CSS works.</p>
 <p>If you add a second file (such as two.css), it will not be applied by default. We will change css.html to a loop structure, like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">slice</span> <span style="color:#e6db74">&#34;css/main.css&#34;</span> <span style="color:#e6db74">&#34;css/two.css&#34;</span> }}
-</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#66d9ef">range</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> <span style="color:#f92672">:=</span> . }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> }}
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> }}
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span>=<span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">else</span> }}
-</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">minify</span> | <span style="color:#a6e22e">fingerprint</span> }}
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span>=<span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span> <span style="color:#a6e22e">integrity</span>=<span style="color:#e6db74">&#34;{{ .Data.Integrity }}&#34;</span> <span style="color:#a6e22e">crossorigin</span>=<span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> <span style="color:#ff5c57">$</span>files <span style="color:#ff6ac1">:=</span> slice <span style="color:#5af78e">&#34;css/main.css&#34;</span> <span style="color:#5af78e">&#34;css/two.css&#34;</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">range</span> <span style="color:#ff5c57">$</span>files }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> <span style="color:#ff5c57">$</span>file <span style="color:#ff6ac1">:=</span> . }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> with resources.Get <span style="color:#ff5c57">$</span>file }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">if</span> hugo.IsDevelopment }}
+</span></span><span style="display:flex;"><span>      &lt;link rel=<span style="color:#5af78e">&#34;stylesheet&#34;</span> href=<span style="color:#5af78e">&#34;{{ .RelPermalink }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">else</span> }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#ff6ac1">-</span> with . | minify | fingerprint }}
+</span></span><span style="display:flex;"><span>        &lt;link rel=<span style="color:#5af78e">&#34;stylesheet&#34;</span> href=<span style="color:#5af78e">&#34;{{ .RelPermalink }}&#34;</span> integrity=<span style="color:#5af78e">&#34;{{ .Data.Integrity }}&#34;</span> crossorigin=<span style="color:#5af78e">&#34;anonymous&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> end }}
 </span></span></code></pre></div><p>Feel free to copy this over. Add any CSS files you add into the first line.</p>
 <h2 id="4-the-javascript">4. The JavaScript</h2>
 <p>Honestly? Same story as the CSS. JavaScript files go in yourthemename/assets/js.</p>
 <p>To add multiple files, we need to edit layouts/_partials/head/js.html.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">slice</span> <span style="color:#e6db74">&#34;js/main.js&#34;</span> <span style="color:#e6db74">&#34;js/another.js&#34;</span> }}
-</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#66d9ef">range</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">files</span> }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> <span style="color:#f92672">:=</span> . }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span> }}
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">opts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dict</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;minify&#34;</span> (<span style="color:#a6e22e">not</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span>)
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;sourceMap&#34;</span> (<span style="color:#a6e22e">cond</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> <span style="color:#e6db74">&#34;external&#34;</span> <span style="color:#e6db74">&#34;&#34;</span>)
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;targetPath&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">file</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> <span style="color:#ff5c57">$</span>files <span style="color:#ff6ac1">:=</span> slice <span style="color:#5af78e">&#34;js/main.js&#34;</span> <span style="color:#5af78e">&#34;js/another.js&#34;</span> }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">range</span> <span style="color:#ff5c57">$</span>files }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> <span style="color:#ff5c57">$</span>file <span style="color:#ff6ac1">:=</span> . }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> with resources.Get <span style="color:#ff5c57">$</span>file }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> <span style="color:#ff5c57">$</span>opts <span style="color:#ff6ac1">:=</span> dict
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;minify&#34;</span> (not hugo.IsDevelopment)
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;sourceMap&#34;</span> (cond hugo.IsDevelopment <span style="color:#5af78e">&#34;external&#34;</span> <span style="color:#5af78e">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#5af78e">&#34;targetPath&#34;</span> <span style="color:#ff5c57">$</span>file
 </span></span><span style="display:flex;"><span>    }}
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">js</span>.<span style="color:#a6e22e">Build</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">opts</span> }}
-</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hugo</span>.<span style="color:#a6e22e">IsDevelopment</span> }}
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;
-</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#66d9ef">else</span> }}
-</span></span><span style="display:flex;"><span>        {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">with</span> . | <span style="color:#a6e22e">fingerprint</span> }}
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span>=<span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span> <span style="color:#a6e22e">integrity</span>=<span style="color:#e6db74">&#34;{{ .Data.Integrity }}&#34;</span> <span style="color:#a6e22e">crossorigin</span>=<span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;
-</span></span><span style="display:flex;"><span>        {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>      {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>    {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>  {{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
-</span></span><span style="display:flex;"><span>{{<span style="color:#f92672">-</span> <span style="color:#a6e22e">end</span> }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> with . | js.Build <span style="color:#ff5c57">$</span>opts }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">if</span> hugo.IsDevelopment }}
+</span></span><span style="display:flex;"><span>        &lt;script src=<span style="color:#5af78e">&#34;{{ .RelPermalink }}&#34;</span>&gt;&lt;<span style="color:#ff6ac1">/</span>script&gt;
+</span></span><span style="display:flex;"><span>      {{<span style="color:#ff6ac1">-</span> <span style="color:#ff6ac1">else</span> }}
+</span></span><span style="display:flex;"><span>        {{<span style="color:#ff6ac1">-</span> with . | fingerprint }}
+</span></span><span style="display:flex;"><span>          &lt;script src=<span style="color:#5af78e">&#34;{{ .RelPermalink }}&#34;</span> integrity=<span style="color:#5af78e">&#34;{{ .Data.Integrity }}&#34;</span> crossorigin=<span style="color:#5af78e">&#34;anonymous&#34;</span>&gt;&lt;<span style="color:#ff6ac1">/</span>script&gt;
+</span></span><span style="display:flex;"><span>        {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>      {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>    {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>  {{<span style="color:#ff6ac1">-</span> end }}
+</span></span><span style="display:flex;"><span>{{<span style="color:#ff6ac1">-</span> end }}
 </span></span></code></pre></div><p>Add files you create into the first line.</p>
 <h1 id="5-content-archetypes">5. Content archetypes</h1>
 <p>When you create new content in the posts/ directory, hugo will look for the posts.md <strong>archetype</strong>. An archetype is a template for your content.
@@ -149,19 +162,19 @@ If there is no posts.md, it will default to default.md.</p>
 <p>Similarly, you can create archetypes for other content types which will follow the same defaulting behaviour.</p>
 <p>The frontmatter (what we will be editing) can be TOML, YAML or JSON.</p>
 <p>Try creating posts.md and adding tags to the frontmatter section there now! Like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#e6db74">&#39;{{ .Date }}&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">draft</span> = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> =  <span style="color:#e6db74">&#39;&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span><span style="color:#ff5c57">+++</span>
+</span></span><span style="display:flex;"><span>date = <span style="color:#5af78e">&#39;{{ .Date }}&#39;</span>
+</span></span><span style="display:flex;"><span>draft = <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>title = <span style="color:#5af78e">&#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;</span>
+</span></span><span style="display:flex;"><span>tags =  <span style="color:#5af78e">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">+++</span>
 </span></span></code></pre></div><p>And create a new post with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content posts/yourpostname.md
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content posts/yourpostname.md
 </span></span></code></pre></div><p>If everything went right, it should contain your added field.</p>
 <p>For more info about what you can put here, the hugo documentation&rsquo;s <a href="https://gohugo.io/content-management/front-matter/">front matter page</a> will help.</p>
 <p>The archetype used depends on the subdirectory passed to the new content command. Here we passed posts/, so it used the posts.md archetype.</p>
 <p>But you can also specify the archetype to use like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content --kind tutorials posts/yourpostname.md
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new content --kind tutorials posts/yourpostname.md
 </span></span></code></pre></div><p>This will use a tutorials.md archetype, if it exists. If not, it will go to posts.md.</p>
 <h1 id="61-functionalities">6.1. Functionalities</h1>
 <p>I&rsquo;ve taught you how to make basic edits to your theme. Now, what if, for example, you wanted to add support for comments? or another &ldquo;functionality&rdquo;?
@@ -176,15 +189,15 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 <p>Go to the layout(s) you want comments to appear on and add the following code wherever you see fit in the structure, for posts (where you most likely want it) this would be in page.html.</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cusdis_thread&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-host</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-app-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;YOURIDHERE&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .File.UniqueID }}&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data-page-title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Title }}&#34;</span>
-</span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">div</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;cusdis_thread&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">data-host</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;https://cusdis.com&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">data-app-id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;YOURIDHERE&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">data-page-id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;{{ .File.UniqueID }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">data-page-url</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;{{ .Permalink }}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#57c7ff">data-page-title</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;{{ .Title }}&#34;</span>
+</span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#ff6ac1">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">script</span> <span style="color:#57c7ff">async</span> <span style="color:#57c7ff">defer</span> <span style="color:#57c7ff">src</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;https://cusdis.com/js/cusdis.es.js&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">script</span>&gt;
 </span></span></code></pre></div><p>(Thank you to <a href="https://discourse.gohugo.io/t/free-and-open-source-comments-for-hugo/32940">this post on the hugo forums</a>)</p>
 <p>A bug with this I have on librewolf at least is that If you submit a comment, the widget unloads? When you reload the page it&rsquo;s back though. Man, frankly, idk. But cusdis is easy and open source so I&rsquo;m sticking with it for now.</p>
 <ol start="3">
@@ -203,20 +216,20 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
 <ol>
 <li>Go to your theme&rsquo;s hugo.toml and add the following code :</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span>[<span style="color:#a6e22e">outputs</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">home</span> = [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;rss&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span>[outputs]
+</span></span><span style="display:flex;"><span>  home = [<span style="color:#5af78e">&#39;html&#39;</span>, <span style="color:#5af78e">&#39;rss&#39;</span>]
 </span></span></code></pre></div><ol start="2">
 <li>If you want to disable rss for certain pages, add a line like this beneath our existing code:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span> <span style="color:#a6e22e">taxonomy</span> = [<span style="color:#e6db74">&#39;html&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-TOML" data-lang="TOML"><span style="display:flex;"><span> taxonomy = [<span style="color:#5af78e">&#39;html&#39;</span>]
 </span></span></code></pre></div><p>This explicitly sets the output for taxonomy (in this example) to just HTML. I&rsquo;ll be real, I don&rsquo;t know the fine details of this.</p>
 <p>Hugo has a built in RSS template. If you want to change it, add a home.rss.xml file and a section.rss.xml file in your layouts folder (and other types, as needed.)</p>
 <ol start="3">
 <li>To include a reference to your feed in your site&rsquo;s <code>&lt;head&gt;</code> tag, add the following to head.html :</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>{{ <span style="color:#a6e22e">with</span> .<span style="color:#a6e22e">OutputFormats</span>.<span style="color:#a6e22e">Get</span> <span style="color:#e6db74">&#34;rss&#34;</span> }}
-</span></span><span style="display:flex;"><span>  {{ <span style="color:#a6e22e">printf</span> <span style="color:#e6db74">`&lt;link rel=%q type=%q href=%q title=%q&gt;`</span> .<span style="color:#a6e22e">Rel</span> .<span style="color:#a6e22e">MediaType</span>.<span style="color:#a6e22e">Type</span> .<span style="color:#a6e22e">Permalink</span> <span style="color:#a6e22e">site</span>.<span style="color:#a6e22e">Title</span> | <span style="color:#a6e22e">safeHTML</span> }}
-</span></span><span style="display:flex;"><span>{{ <span style="color:#a6e22e">end</span> }}
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>{{ with .OutputFormats.Get <span style="color:#5af78e">&#34;rss&#34;</span> }}
+</span></span><span style="display:flex;"><span>  {{ printf <span style="color:#5af78e">`&lt;link rel=%q type=%q href=%q title=%q&gt;`</span> .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+</span></span><span style="display:flex;"><span>{{ end }}
 </span></span></code></pre></div><ol start="4">
 <li>For ease of access, add an RSS menu item or something like that to your site pointing to <a href="https://www.yourdomainname.whatever/index.xml">www.yourdomainname.whatever/index.xml</a> .</li>
 </ol>
@@ -236,11 +249,13 @@ I&rsquo;ll go over a few common functionalities (as I&rsquo;m calling them) for 
         data-page-title="Hugo Theme Tutorial"></div>
       <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-
-  </main>
-  <footer>
-    <p>Copyright 2025-2025 <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a></p>
-
-  </footer>
-</body>
+</main>
+      </div>
+      <div id="footer-container">
+        <footer><p>Copyright 2025-2025 <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a></p>
+</footer>
+      </div>
+    </div>
+    
+  </body>
 </html>

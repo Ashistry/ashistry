@@ -6,3 +6,23 @@ theme='ashistrytheme'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[markup]
+  [markup.highlight]
+    style = "base16-snazzy"
+
+    [menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 30
+
+  [[menus.main]] 
+  name ='RSS'
+  url = '/posts/index.xml'
+  weight= 40

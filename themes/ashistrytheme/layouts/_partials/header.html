@@ -1,2 +1,4 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<header>
+ <div id=title-container><h1>{{ site.Title }}</h1></div> <!-- Site title -->
+  <div id=menu-container>{{ partial "menu.html" (dict "menuID" "main" "page" .) }} </div><!-- Menu partial -->
+</header>

@@ -1,6 +1,6 @@
 {{- /*
 Renders a menu for the given menu ID.
-
+<div id="menu-container">
 @context {page} page The current page.
 @context {string} menuID The menu ID.
 
@@ -48,4 +48,12 @@ Renders a menu for the given menu ID.
       {{- end }}
     </li>
   {{- end }}
+  </div>
+  <div id="select-container">
+  <select id="colorSchemeDropdown" name="colorSchemeDropdown" aria-label="colorSchemeDropdown">
+    <option value="lightMode">light mode</option>
+    <option value="darkMode">dark mode</option>
+    <option value="highContrast">high contrast</option>
+</select>
+</div>
 {{- end }}
