@@ -13,21 +13,7 @@
       <link>http://localhost:1313/posts/hugo-theme-tutorial/</link>
       <pubDate>Wed, 18 Jun 2025 17:22:06 +0200</pubDate>
       <guid>http://localhost:1313/posts/hugo-theme-tutorial/</guid>
-      <description>&lt;p&gt;Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my hugo site. I&amp;rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste &lt;em&gt;fast&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;So in this guide, you will follow along with me as I create a theme from scratch.&lt;/p&gt;&#xA;&lt;p&gt;I will assume you have basic knowledge of the following:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Post 2</title>
-      <link>http://localhost:1313/posts/post-2/</link>
-      <pubDate>Wed, 15 Feb 2023 10:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/posts/post-2/</guid>
-      <description>&lt;p&gt;Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore voluptate occaecat qui mollit laborum ullamco et. Ipsum laboris officia anim laboris culpa eiusmod ex magna ex cupidatat anim ipsum aute. Mollit aliquip occaecat qui sunt velit ut cupidatat reprehenderit enim sunt laborum. Velit veniam in officia nulla adipisicing ut duis officia.&lt;/p&gt;&#xA;&lt;p&gt;Exercitation voluptate irure in irure tempor mollit Lorem nostrud ad officia. Velit id fugiat occaecat do tempor. Sit officia Lorem aliquip eu deserunt consectetur. Aute proident deserunt in nulla aliquip dolore ipsum Lorem ut cupidatat consectetur sit sint laborum. Esse cupidatat sit sint sunt tempor exercitation deserunt. Labore dolor duis laborum est do nisi ut veniam dolor et nostrud nostrud.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Post 1</title>
-      <link>http://localhost:1313/posts/post-1/</link>
-      <pubDate>Sun, 15 Jan 2023 09:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/posts/post-1/</guid>
-      <description>&lt;p&gt;Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat incididunt do nisi Lorem. Tempor do laborum elit laboris excepteur eiusmod do. Eiusmod nisi excepteur ut amet pariatur adipisicing Lorem.&lt;/p&gt;&#xA;&lt;p&gt;Occaecat nulla excepteur dolore excepteur duis eiusmod ullamco officia anim in voluptate ea occaecat officia. Cillum sint esse velit ea officia minim fugiat. Elit ea esse id aliquip pariatur cupidatat id duis minim incididunt ea ea. Anim ut duis sunt nisi. Culpa cillum sit voluptate voluptate eiusmod dolor. Enim nisi Lorem ipsum irure est excepteur voluptate eu in enim nisi. Nostrud ipsum Lorem anim sint labore consequat do.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my Hugo site. I&amp;rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste fast.&lt;/p&gt;&#xA;&lt;p&gt;So in this guide, you will follow along with me as I create a theme from scratch.&lt;/p&gt;&#xA;&lt;p&gt;I will assume you have basic knowledge of the following:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
