@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-css": "sass --watch themes/ashistrytheme/assets/scss/main.scss:themes/ashistrytheme/assets/css/main.css"
   },
   "keywords": [],
   "author": "",

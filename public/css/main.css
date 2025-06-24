@@ -1,21 +1,86 @@
 body {
-  font-family: sans-serif;
-  line-height: 1.5;
-  margin: 1rem;
-  max-width: 768px;
-}
-
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
-}
-
-footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 a {
-  color: #00e;
+  color: #f72a6e;
   text-decoration: none;
 }
+
+pre {
+  white-space: pre-wrap; /* Wraps the code */
+  word-wrap: break-word; /* Breaks long words */
+}
+
+code {
+  white-space: pre-wrap; /* Wraps the code */
+  word-wrap: break-word; /* Breaks long words */
+}
+
+#body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-container {
+  /* Makes posts wrap */
+  max-width: 700px; /* Optional: Set a max width */
+  margin: 0 auto; /* Center the preview */
+  overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
+  word-wrap: break-word; /* For older browsers */
+  hyphens: auto; /* Adds hyphenation where appropriate */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #eb6894;
+  padding: 10px;
+  border-radius: 10px; /* Rounded corners for top-left and top-right */
+}
+
+#menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#menu-container ul {
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Change to column if you want a vertical layout */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  list-style-type: none;
+  font-weight: bold;
+}
+
+#menu-container ul li {
+  padding-top: 1px;
+}
+
+#footer-container {
+  display: flex;
+  justify-content: center;
+}
+
+#title-container {
+  display: flex;
+  justify-content: center;
+  line-height: 0; /* Adjust line height */
+}
+
+#select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+#header-container {
+  border: 2px solid #eb6894;
+  border-radius: 10px; /* Rounded corners for top-left and top-right */
+  display: flex;
+}
+
+/*# sourceMappingURL=main.css.map */
