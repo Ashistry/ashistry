@@ -8,7 +8,7 @@ title = 'Hugo Theme Tutorial'
 
 tags = ''
 
-comments = true
+summary = ''
 
 +++
 
@@ -38,18 +38,20 @@ Go templates are not something I am hugely comfortable with myself, but it isn't
 
 Additionally, I urge you to try and keep your theme/site **accessible.** 
 
-This means sufficient contrast, clear structure, dyslexic-friendly font, and large enough font size, for example. For an easy overview of considerations, I reccommend[ this article](https://quivo.co/uk/european-accessibility-act-2025/#c11261) about the European accessibility act. 
+This means sufficient contrast, clear structure, dyslexic-friendly font, and large enough font size, for example. For an easy overview of considerations, I reccommend[ this article](https://quivo.co/uk/european-accessibility-act-2025/#c11261) about the European accessibility act. If you don't want to have your colors for high contrast by default, consider adding a high contrast mode that detects the user's preferences (There is a note about how to do this in this guide).
 
 Also, [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) labels help screenreader users use your website. They're not always strictly neccesary for simple, well-structured sites, but it's a good idea and doesn't take much time.
 
 Firefox and browsers based on it have a neat little built in accesibility inspector in your dev console, set the dropdown menu to "all issues". We all share the internet, including those with disabilities. 
 
-(For editing the colors of code blocks, check out [this hugo doc](https://gohugo.io/quick-reference/syntax-highlighting-styles). "base16-snazzy" or "fruity" meets the standards as far as I can tell.)
+(For editing the colors of code blocks, check out [this hugo doc](https://gohugo.io/quick-reference/syntax-highlighting-styles). "modus-vivendi" is the only default that meets the standards as far as I can tell.)
+
+I will maybe talk about accessibility more in another post. I am not visually impaired, so I am less confident to speak to 100% correctness on how to do this.
 
 
 Let's do this!
 
-## 1.1. Site setup
+## 1. Site setup
 
 We will be creating a new Hugo site for ease of development. If you want, you can simply copy over your posts to the new site later, but unimplemented functions will not work. A new Hugo theme comes with some example posts by default; you can delete these from yourthemename/content/posts if you want.
 
@@ -77,7 +79,7 @@ I have chosen "ashistrytheme" as my name (very creative, right?).
 
 Do your usual setup in your site's hugo.toml (aka its frontmatter) and set the theme to your theme.
 
-## 1.2. (optional but recommended) npm setup
+### 1.1. (optional but recommended) npm setup
 
 Want to work with additional dependencies such as CSS superset Sass? Let's set up npm. You have a few options here!
 
@@ -95,7 +97,7 @@ This is the time to install any dependencies you want to use.
 
 When using Git, don't forget to add a .gitignore for your node_modules folder.
 
-## 2.1 Exploring layouts
+## 2. Exploring layouts
 
 Let's run our development server once so everything we want to look at is generated.
 
@@ -115,7 +117,7 @@ We can find info about how to create and reference layouts in the [Hugo layout d
 
 Read at least the Introduction and Template Types sections (and, at the time of writing, the info about the v0.146.0 template system). But looking around a little is definitely beneficial.
 
-## 2.2 Editing HTML
+### 2.1. Editing HTML
 
 home.html is the "main" file for the `{{main}}` definition. Let's add something and see it change.
 
@@ -237,7 +239,7 @@ To add multiple files, we need to edit layouts/\_partials/head/js.html.
 
 Add files you create into the first line.
 
-# 5. Content archetypes
+## 5. Content archetypes
 
 When you create new content in the posts/ directory, Hugo will look for the posts.md archetype. An archetype is a template for your content.
 
@@ -291,13 +293,13 @@ hugo new content --kind tutorials posts/yourpostname.md
 
 This will use a tutorials.md archetype, if it exists. If not, it will go to posts.md.
 
-# 6.1. Functionalities (optional section)
+## 6. Functionalities (optional section)
 
 I've taught you how to make basic edits to your theme. Now, what if, for example, you wanted to add support for comments? or another "functionality"?
 
 I'll go over a few common functionalities (as I'm calling them) for your site.
 
-# 6.2. Comments
+### 6.1. Comments
 
 First, decide on your comment provider. Disqus is a popular choice, and Hugo ships with support for it, but here I will be using [Cusdis](https://cusdis.com/).
 
@@ -328,10 +330,10 @@ First, decide on your comment provider. Disqus is a popular choice, and Hugo shi
 
 5. You can moderate your comments (required; they won't be published otherwise) in their dashboard.
 
-It is likely you may have issues with Cusdis not displaying at full height. For now, you can add this script as a workaround to your pages.html:
+It is likely you may have issues with Cusdis not displaying at full height. For now, you can add this script to your widget's location as a workaround:
 
 ```html
-<script> //workaround for cusdis height
+<script>
 window.addEventListener('load', function () {
             setTimeout(() => {
                 let scrollHeight = document.querySelector("#cusdis_thread iframe").contentWindow.document.body.scrollHeight;
@@ -341,7 +343,7 @@ window.addEventListener('load', function () {
 </script>
 ```
 Thank you to [4627488](https://github.com/djyde/cusdis/issues/283#issuecomment-2543119916) on github for the workaround.
-# 6.3 RSS
+### 6.2. RSS
 
 Hugo ships with RSS support. To enable it, do the following:
 
@@ -383,13 +385,53 @@ Hugo has a built-in RSS template. If you want to change it, add a home.rss.xml f
 
 Now we have an RSS feed!
 
-# 6.4 Github deployment workflow 
+### 6.3. Github deployment workflow 
 
 Please refer to the official Hugo [tutorial](https://gohugo.io/host-and-deploy/host-on-github-pages/?ref=curiousmints.com).
 
-# 6.5 Sass/Scss (And other supersets)
+### 6.4. Sass/Scss (And other supersets)
 
-We can set an npm command to watch for changes to our scss files and then automatically spit out the css when they change.
+Hugo has built in support for Sass. Ain't that neat! I reccomend the built-in method.
+Make sure to install the dart version of sass:
+```bash
+npm install dart-sass
+```
+
+In your head partial, replate the current contents the following:
+```go
+{{ $scssFiles := slice "scss/main.scss" "scss/another-file.scss" }} <!-- Add more SCSS files as needed -->
+{{ $opts := dict
+    "enableSourceMap" hugo.IsDevelopment
+    "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+    "targetPath" "css/main.css"
+    "transpiler" "dartsass"
+    "vars" site.Params.styles
+    "includePaths" (slice "node_modules/bootstrap/scss")
+}}
+
+{{ range $scssFiles }}
+  {{ with resources.Get . }}
+    {{ with . | toCSS $opts }}
+      {{ if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+        {{ with . | fingerprint }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+```
+and in your theme's hugo.toml, add the following:
+
+```toml
+[build]
+  writeStats = true
+```
+
+Alternatively, We can set an npm command to watch for changes to our scss files and then automatically spit out the css when they change.
 Hugo will automatically detect this change to our css and rebuild our development environment site for us.
 
 1. Create a directory in yourthemename/assets called "scss".
@@ -408,13 +450,52 @@ npm run build-css
 6. In a seperate terminal, run your hugo development server.
 7. Now whenever you save your scss, it should compile, and hugo should handle the new css automatically.
 
-Sometimes fast render can cause issues. If the built css is not loading on your dev server, pass the --disableFastRender argument to hugo server.
+Sometimes fast render can cause issues with this method. If the built css is not loading on your dev server, pass the --disableFastRender argument to hugo server.
 
-The process for other supersets (such as TypeScript) should work similarly, if they have a watch function you can use.
-# 6.6 A small note on menu links
+The processes for other supersets (such as TypeScript) should work similarly, pick the method depending on their support.
+### 6.5. Auto detect color scheme preferences
+We will set up dark mode and high contrast mode here.
+
+In your css, add the following:
+
+```css
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    h1, h2, h3 {
+        color: white;
+    }
+
+    p {
+        color: white; 
+    }
+}
+
+/* High contrast mode styles */
+@media (prefers-contrast: more) {
+    body {
+        background-color: yellow;
+        color: black;
+    }
+
+    h1, h2, h3, p {
+        font-weight: bold
+    }
+}
+```
+
+As you can see, these media queries have a block. This means any style in that block is associated with that query.
+Adding a toggle for color schemes is a good idea too, but this tutorial will not cover that.
+
+### 6.6. A small note on menu links
 When adding a menu item to a hugo.toml, do not use pageref for non-standard destinations. Use the url variable instead.
-# 7. Now what?
+
+## 7. Now what?
 
 Now is the time for you to explore on your own and design your theme with the tools I've given you. Have fun, and good luck!
 
-P.S.: Remember the documentation for specific needs! If you can't figure it out, leave me a comment or [e-mail](mailto:ashistry@proton.me) and I'll try to help.
+P.S.: Remember the documentation for specific needs! If you can't figure it out, leave me a comment or [e-mail](mailto:ashistry@proton.me) me and I'll try to help.

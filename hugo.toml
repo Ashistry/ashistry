@@ -9,7 +9,7 @@ theme='ashistrytheme'
 
 [markup]
   [markup.highlight]
-    style = "base16-snazzy"
+    style = "modus-vivendi"
 
     [menus]
   [[menus.main]]
