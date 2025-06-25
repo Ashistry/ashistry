@@ -1,14 +1,19 @@
-{{- $files := slice "css/main.css" "css/two.css" }}
-{{- range $files }}
-  {{- $file := . }}
-  {{- with resources.Get $file }}
-    {{- if hugo.IsDevelopment }}
+{{ with resources.Get "scss/main.scss" }}
+  {{ $opts := dict
+    "enableSourceMap" hugo.IsDevelopment
+    "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+    "targetPath" "css/main.css"
+    "transpiler" "dartsass"
+    "vars" site.Params.styles
+    "includePaths" (slice "node_modules/bootstrap/scss")
+  }}
+  {{ with . | toCSS $opts }}
+    {{ if hugo.IsDevelopment }}
       <link rel="stylesheet" href="{{ .RelPermalink }}">
-    {{- else }}
-      {{- with . | minify | fingerprint }}
+    {{ else }}
+      {{ with . | fingerprint }}
         <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-      {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
-
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -47,13 +47,11 @@ Renders a menu for the given menu ID.
         </ul>
       {{- end }}
     </li>
+    
   {{- end }}
+
+    <input type="checkbox" id="theme-toggle">
+    <label of="theme-toggle" id="checkbox-label">&#9728	</label>
   </div>
-  <div id="select-container">
-  <select id="colorSchemeDropdown" name="colorSchemeDropdown" aria-label="colorSchemeDropdown">
-    <option value="lightMode">light mode</option>
-    <option value="darkMode">dark mode</option>
-    <option value="highContrast">high contrast</option>
-</select>
 </div>
 {{- end }}

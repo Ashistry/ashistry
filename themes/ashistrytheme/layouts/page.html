@@ -5,7 +5,7 @@
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
 $dateHuman := .Date | time.Format ":date_long" }}
 <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
+{{ .TableOfContents }}
 {{ .Content }} {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 <p>Comments: (If it disappears, reload the page)</p>
 <div
@@ -18,11 +18,13 @@ $dateHuman := .Date | time.Format ":date_long" }}
   data-page-title="{{ .Title }}"
 ></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-<script> //workaround for cusdis height
+<script>
+ //workaround for cusdis height
 window.addEventListener('load', function () {
             setTimeout(() => {
                 let scrollHeight = document.querySelector("#cusdis_thread iframe").contentWindow.document.body.scrollHeight;
                 document.querySelector("#cusdis_thread iframe").style.height = scrollHeight + "px";
+  
             }, 2000);
         });
 

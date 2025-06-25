@@ -1,18 +1,38 @@
+// Define color variables
+$light-background: #f8f9fa;
+$light-text: #262729; // Light text color
+$light-accent: #dd1568;
+$dark-background: #262729; // Dark background color
+$dark-text: #f8f9fa; // Dark text color
+$dark-accent: #ff67a6;
+$border-color: #ee9db8;
+
 body {
-  background-color: white;
+  background-color: $light-background;
+  color: $light-text;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  a {
+    color: $light-accent; // Default light accent color for links
+    text-decoration: none;
+  }
+
+  &.dark {
+    background-color: $dark-background;
+    color: $dark-text;
+
+    // Apply dark link styles when body has .dark class
+    a {
+      color: $dark-accent; // Dark accent color for links
+    }
+
+    header h1 {
+      color: $dark-text; // Dark theme color for header
+    }
+  }
 }
 
-a {
-  color: #f72a6e;
-  text-decoration: none;
-}
-
-pre {
-  white-space: pre-wrap; /* Wraps the code */
-  word-wrap: break-word; /* Breaks long words */
-}
-
+pre,
 code {
   white-space: pre-wrap; /* Wraps the code */
   word-wrap: break-word; /* Breaks long words */
@@ -22,42 +42,40 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   align-items: center;
 }
 
-
 #main-container {
-    max-width: 700px; /* Set a max width */
-    margin: 0 auto; /* Center the preview */
-    overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
-    word-wrap: break-word; /* For older browsers */
-    hyphens: auto; /* Adds hyphenation where appropriate */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px solid #eb6894;
-    border-top: none; /* Remove the top border to avoid double borders */
-    padding: 10px;
+  max-width: 700px; /* Set a max width */
+  margin: 0 auto; /* Center the preview */
+  overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
+  word-wrap: break-word; /* For older browsers */
+  hyphens: auto; /* Adds hyphenation where appropriate */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid $border-color;
+  border-top: none; /* Remove the top border to avoid double borders */
+  padding: 10px;
 }
 
 #menu-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
 
-#menu-container ul {
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Change to column if you want a vertical layout */
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-  list-style-type: none;
-  font-weight: bold;
-}
+  ul {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Change to column if you want a vertical layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    list-style-type: none;
+    font-weight: bold;
 
-#menu-container ul li {
-  padding-top: 1px;
+    li {
+      padding-top: 1px;
+    }
+  }
 }
 
 #footer-container {
@@ -77,18 +95,36 @@ code {
   align-items: center;
   padding-bottom: 10px;
 }
+
 #header-container {
-    border: 2px solid #eb6894;
-    width: 100%; /* Set width to 100% to match the main container */
-    max-width: 724px; /* Match the max width of the main container */
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto; /* Center the header container */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
+  border: 2px solid $border-color;
+  width: 100%; /* Set width to 100% to match the main container */
+  max-width: 724px; /* Match the max width of the main container */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto; /* Center the header container */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+// Media queries for system preference
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $dark-background;
+    color: $dark-text;
+
+    a {
+      color: $dark-accent; // Dark theme color for links
+    }
+
+    header h1 {
+      color: $dark-text; // Dark theme color for header
+    }
+  }
 }
 
 
-// Dark mode
-
-// High contrast mode
+#checkbox-label {
+	font-size: 25px
+}

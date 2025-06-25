@@ -4,9 +4,21 @@ title = 'My New Hugo Site'
 
 [module]
   [module.hugoVersion]
-    extended = false
+    extended = true
     min = '0.146.0'
 
 [outputs]
   home = ['html', 'rss']
   section = ['html', 'rss']
+
+  [markup]
+
+  [markup.tableOfContents]
+
+    startLevel = 1
+
+    ordered = true
+
+    endLevel = 10
+[build]
+  writeStats = true

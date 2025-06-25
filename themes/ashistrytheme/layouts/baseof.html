@@ -5,12 +5,11 @@
 >
   <head>
     {{ partial "head.html" . }}
+
   </head>
   <body>
     <div id="body-container">
-      <div id="header-container">
-      {{ partial "header.html" . }}
-      </div>
+      <div id="header-container">{{ partial "header.html" . }}</div>
       <div id="main-container">
         <main>{{ block "main" . }}{{ end }}</main>
       </div>
@@ -18,6 +17,5 @@
         <footer>{{ partial "footer.html" . }}</footer>
       </div>
     </div>
-    
   </body>
 </html>
