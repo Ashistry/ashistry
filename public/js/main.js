@@ -28,7 +28,7 @@
     });
     themeToggle.addEventListener("change", () => {
       const currentTheme = themeToggle.checked ? "dark" : "light";
-      checkboxLabel.innerHTML = themeToggle.checked ? "&#9789;" : "&#9728;";
+      checkboxLabel.innerHTML = themeToggle.checked ? "dark" : "light";
       applyTheme(currentTheme);
       localStorage.setItem("theme", currentTheme);
     });

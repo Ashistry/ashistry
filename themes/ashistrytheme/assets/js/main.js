@@ -39,8 +39,8 @@ themeToggle.addEventListener('change', () => {
     const currentTheme = themeToggle.checked ? 'dark' : 'light';
     
     // Change the icon based on the themeToggle state
-    checkboxLabel.innerHTML = themeToggle.checked ? "&#9789;" : "&#9728;"; // Sun icon for light, Moon icon for dark
-    
+    checkboxLabel.innerHTML = themeToggle.checked ? "dark" : "light"; // Sun icon for light, Moon icon for dark
+    // TODO: correct display name when auto loaded
     applyTheme(currentTheme);
     
     // Store the theme preference in localStorage
