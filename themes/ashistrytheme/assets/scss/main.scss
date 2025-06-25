@@ -29,7 +29,7 @@ body {
       color: $dark-text; // Dark theme color for header
     }
   }
-    transition: background-color 0.5s ease, color 0.5s ease; // Add transition for smooth effect
+    transition: background-color 0.5s ease, color 0.5s ease, h 0.5s ease; // Add transition for smooth effect
 }
 
 pre,
@@ -89,7 +89,7 @@ code {
 
 /* Change styles when the checkbox is checked */
 .slider-checkbox:checked + .slider-label {
-  background-color: #4a23a3; /* Background color when on */
+  background-color: #3a419b; /* Background color when on */
 }
 
 .slider-checkbox:checked + .slider-label::before {
@@ -151,7 +151,7 @@ code {
     color: $dark-text;
 
     a {
-      color: $dark-accent; //      color: $dark-accent; // Dark theme color for links
+      color: $dark-accent; //color: $dark-accent; // Dark theme color for links
     }
 
     header h1 {
