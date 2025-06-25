@@ -9,10 +9,15 @@
 <meta name="color-scheme" content="light dark">
 <title>Hugo Theme Tutorial | Ashistry</title>
 
-  
+ 
+
+
+
   
     
-      <link rel="stylesheet" href="/css/main.css">
+      
+        <link rel="stylesheet" href="/css/main.css">
+      
     
   
 
@@ -366,7 +371,7 @@
 <p>Hugo has built in support for Sass. Ain&rsquo;t that neat! I reccomend the built-in method.
 Make sure to install the dart version of sass:</p>
 <div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install dart-sass
-</span></span></code></pre></div><p>In your head partial, replate the current contents the following:</p>
+</span></span></code></pre></div><p>In your css.html partial, replate the current contents the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>{{ $scssFiles <span style="color:#00d3d0">:=</span> slice <span style="color:#79a8ff">&#34;scss/main.scss&#34;</span> <span style="color:#79a8ff">&#34;scss/another-file.scss&#34;</span> }} &lt;!<span style="color:#00d3d0">--</span> Add more SCSS files as needed <span style="color:#00d3d0">--</span>&gt;
 </span></span><span style="display:flex;"><span>{{ $opts <span style="color:#00d3d0">:=</span> dict
 </span></span><span style="display:flex;"><span>    <span style="color:#79a8ff">&#34;enableSourceMap&#34;</span> hugo.IsDevelopment

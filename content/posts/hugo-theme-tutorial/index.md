@@ -397,7 +397,7 @@ Make sure to install the dart version of sass:
 npm install dart-sass
 ```
 
-In your head partial, replate the current contents the following:
+In your css.html partial, replate the current contents the following:
 ```go
 {{ $scssFiles := slice "scss/main.scss" "scss/another-file.scss" }} <!-- Add more SCSS files as needed -->
 {{ $opts := dict

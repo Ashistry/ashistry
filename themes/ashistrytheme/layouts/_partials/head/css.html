@@ -1,18 +1,23 @@
-{{ with resources.Get "scss/main.scss" }}
-  {{ $opts := dict
+
+{{ $scssFiles := slice "scss/main.scss" }} <!-- Add more SCSS files as needed -->
+{{ $opts := dict
     "enableSourceMap" hugo.IsDevelopment
     "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
     "targetPath" "css/main.css"
     "transpiler" "dartsass"
     "vars" site.Params.styles
     "includePaths" (slice "node_modules/bootstrap/scss")
-  }}
-  {{ with . | toCSS $opts }}
-    {{ if hugo.IsDevelopment }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}">
-    {{ else }}
-      {{ with . | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+}}
+
+{{ range $scssFiles }}
+  {{ with resources.Get . }}
+    {{ with . | toCSS $opts }}
+      {{ if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+        {{ with . | fingerprint }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}
