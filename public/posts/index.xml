@@ -9,11 +9,11 @@
     <lastBuildDate>Wed, 18 Jun 2025 17:22:06 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugo Theme Tutorial</title>
+      <title>Creating your own Hugo theme</title>
       <link>http://localhost:1313/posts/hugo-theme-tutorial/</link>
       <pubDate>Wed, 18 Jun 2025 17:22:06 +0200</pubDate>
       <guid>http://localhost:1313/posts/hugo-theme-tutorial/</guid>
-      <description>&lt;p&gt;Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my Hugo site. I&amp;rsquo;ve started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste fast.&lt;/p&gt;&#xA;&lt;p&gt;So in this guide, you will follow along with me as I create a theme from scratch.&lt;/p&gt;&#xA;&lt;p&gt;I will assume you have basic knowledge of the following:&lt;/p&gt;</description>
+      <description>In this guide, you will follow along with me as I create a basic hugo theme from scratch. I talk about some functionalities you can add and provide a word of advice on accessibility. Some basic webdev knowledge is required!</description>
     </item>
   </channel>
 </rss>

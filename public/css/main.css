@@ -17,6 +17,10 @@ body.dark a {
 body.dark header h1 {
   color: #f8f9fa;
 }
+body.dark #cusdis_thread .border-gray-200 {
+  border: 2px solid rgba(35, 35, 36, 0.78) !important;
+  background-color: #CBAB6C !important;
+}
 
 pre,
 code {

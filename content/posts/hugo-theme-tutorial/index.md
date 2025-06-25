@@ -2,13 +2,13 @@
 
 date = '2025-06-18T17:22:06+02:00'
 
-draft = true
+draft = false
 
-title = 'Hugo Theme Tutorial'
+title = 'Creating your own Hugo theme'
 
-tags = ''
+tags = 'tutorials,webdev,frontend,html,css,javascript'
 
-summary = ''
+summary = 'In this guide, you will follow along with me as I create a basic hugo theme from scratch. I talk about some functionalities you can add and provide a word of advice on accessibility. Some basic webdev knowledge is required!'
 
 +++
 
@@ -343,6 +343,8 @@ window.addEventListener('load', function () {
 </script>
 ```
 Thank you to [4627488](https://github.com/djyde/cusdis/issues/283#issuecomment-2543119916) on github for the workaround.
+
+Cusdis is **not perfect**. Styling the hosted version is a pain and I can't figure it out, so it's hard to see on dark mode on my site. I will be switching to self hosted comments eventually when I have spare hardware.
 ### 6.2. RSS
 
 Hugo ships with RSS support. To enable it, do the following:

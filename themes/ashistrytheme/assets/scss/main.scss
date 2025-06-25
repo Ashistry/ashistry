@@ -29,6 +29,12 @@ body {
     header h1 {
       color: $dark-text; // Dark theme color for header
     }
+
+	
+	#cusdis_thread .border-gray-200 {
+  border: 2px solid rgba(35, 35, 36, .78) !important;
+  background-color: #CBAB6C !important;
+}
   }
 }
 

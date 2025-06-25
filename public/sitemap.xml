@@ -11,8 +11,12 @@
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-06-18T17:22:06+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-06-18T17:22:06+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tutorialswebdevfrontendhtmlcssjavascript/</loc>
+    <lastmod>2025-06-18T17:22:06+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>
