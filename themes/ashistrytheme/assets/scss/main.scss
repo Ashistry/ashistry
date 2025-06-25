@@ -41,8 +41,10 @@ body {
 pre,
 code {
   white-space: pre-wrap; /* Wraps the code */
-  word-wrap: break-word; /* Breaks long words */
+  word-wrap: normal; /* Breaks long words */
+  overflow-wrap: break-word; /* Breaks at whole words */
 }
+
 
 #body-container {
   display: flex;
@@ -54,9 +56,9 @@ code {
 #main-container {
   max-width: 700px; /* Set a max width */
   margin: 0 auto; /* Center the preview */
-  overflow-wrap: break-word; /* Allows long words to break and wrap onto the next line */
-  word-wrap: break-word; /* For older browsers */
-  hyphens: auto; /* Adds hyphenation where appropriate */
+  word-wrap: normal; /* Breaks long words */
+  overflow-wrap: break-word; /* Breaks at whole words */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,6 +66,8 @@ code {
   border-top: none; /* Remove the top border to avoid double borders */
   padding: 10px;
 }
+
+
 
 #menu-container {
   display: flex;
