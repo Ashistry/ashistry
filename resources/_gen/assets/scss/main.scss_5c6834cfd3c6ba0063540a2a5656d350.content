@@ -2,6 +2,7 @@ body {
   background-color: #f8f9fa;
   color: #262729;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 body a {
   color: #dd1568;
@@ -16,10 +17,6 @@ body.dark a {
 }
 body.dark header h1 {
   color: #f8f9fa;
-}
-body.dark #cusdis_thread .border-gray-200 {
-  border: 2px solid rgba(35, 35, 36, 0.78) !important;
-  background-color: #CBAB6C !important;
 }
 
 pre,
@@ -47,6 +44,43 @@ code {
   border: 2px solid #ee9db8;
   border-top: none; /* Remove the top border to avoid double borders */
   padding: 10px;
+}
+
+.slider-checkbox {
+  display: none; /* Hide the checkbox */
+}
+
+.slider-label {
+  width: 40px; /* Width of the slider */
+  height: 20px; /* Height of the slider */
+  background-color: #262729; /* Background color when off */
+  border-radius: 10px; /* Rounded corners */
+  position: relative;
+  cursor: pointer;
+}
+
+.slider-label::before {
+  content: "";
+  position: absolute;
+  width: 17px; /* Width of the slider knob */
+  height: 17px; /* Height of the slider knob */
+  background-color: transparent; /* Color of the knob */
+  border-radius: 100%; /* Make it round */
+  top: 1.5px; /* Position it */
+  left: 1.5px; /* Position it */
+  background-image: url("/lightbulb.svg"); /* Path to your SVG */
+  background-size: contain; /* Ensure the SVG fits */
+  background-repeat: no-repeat; /* Prevent repeating */
+  transition: 0.3s;
+}
+
+/* Change styles when the checkbox is checked */
+.slider-checkbox:checked + .slider-label {
+  background-color: #4a23a3; /* Background color when on */
+}
+
+.slider-checkbox:checked + .slider-label::before {
+  transform: translateX(20px); /* Move the knob */
 }
 
 #menu-container {

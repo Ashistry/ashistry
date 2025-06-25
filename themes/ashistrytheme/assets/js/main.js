@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
-    const themeColorMeta = document.getElementsByName('theme-color');
-    const checkboxLabel = document.getElementById("checkbox-label")
+    const checkboxLabel = document.getElementById("slider-id");
 
     // Function to apply the theme based on preference
     function applyTheme(theme) {
         if (theme === 'dark') {
             document.body.classList.add('dark');
-
             themeToggle.checked = true; // Check the toggle
         } else {
             document.body.classList.remove('dark');
-
             themeToggle.checked = false; // Uncheck the toggle
+
         }
     }
 
@@ -35,18 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle theme manually
-themeToggle.addEventListener('change', () => {
-    const currentTheme = themeToggle.checked ? 'dark' : 'light';
-    
-    // Change the icon based on the themeToggle state
-    checkboxLabel.innerHTML = themeToggle.checked ? "dark" : "light"; // Sun icon for light, Moon icon for dark
-    // TODO: correct display name when auto loaded
-    applyTheme(currentTheme);
-    
-    // Store the theme preference in localStorage
-    localStorage.setItem('theme', currentTheme);
-});
-
+    if (themeToggle) {
+        themeToggle.addEventListener('change', () => {
+            const currentTheme = themeToggle.checked ? 'dark' : 'light';
+            applyTheme(currentTheme);
+            
+            // Store the theme preference in localStorage
+            localStorage.setItem('theme', currentTheme);
+        });
+    }
 
     // Call this function on page load
     loadThemePreference();

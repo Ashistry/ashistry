@@ -21,7 +21,6 @@ body {
     background-color: $dark-background;
     color: $dark-text;
 
-    // Apply dark link styles when body has .dark class
     a {
       color: $dark-accent; // Dark accent color for links
     }
@@ -29,13 +28,8 @@ body {
     header h1 {
       color: $dark-text; // Dark theme color for header
     }
-
-	
-	#cusdis_thread .border-gray-200 {
-  border: 2px solid rgba(35, 35, 36, .78) !important;
-  background-color: #CBAB6C !important;
-}
   }
+    transition: background-color 0.5s ease, color 0.5s ease; // Add transition for smooth effect
 }
 
 pre,
@@ -44,7 +38,6 @@ code {
   word-wrap: normal; /* Breaks long words */
   overflow-wrap: break-word; /* Breaks at whole words */
 }
-
 
 #body-container {
   display: flex;
@@ -66,7 +59,42 @@ code {
   padding: 10px;
 }
 
+.slider-checkbox {
+  display: none; /* Hide the checkbox */
+}
 
+.slider-label {
+  width: 40px; /* Width of the slider */
+  height: 20px; /* Height of the slider */
+  background-color: $light-text; /* Background color when off */
+  border-radius: 10px; /* Rounded corners */
+  position: relative;
+  cursor: pointer;
+}
+
+.slider-label::before {
+  content: "";
+  position: absolute;
+  width: 17px; /* Width of the slider knob */
+  height: 17px; /* Height of the slider knob */
+  background-color: transparent; /* Color of the knob */
+  border-radius: 100%; /* Make it round */
+  top: 1.5px; /* Position it */
+  left: 1.5px; /* Position it */
+  background-image: url("/lightbulb.svg"); /* Path to your SVG */
+  background-size: contain; /* Ensure the SVG fits */
+  background-repeat: no-repeat; /* Prevent repeating */
+  transition: 0.3s;
+}
+
+/* Change styles when the checkbox is checked */
+.slider-checkbox:checked + .slider-label {
+  background-color: #4a23a3; /* Background color when on */
+}
+
+.slider-checkbox:checked + .slider-label::before {
+  transform: translateX(20px); /* Move the knob */
+}
 
 #menu-container {
   display: flex;
@@ -117,14 +145,13 @@ code {
 }
 
 // Media queries for system preference
-
 @media (prefers-color-scheme: dark) {
   body {
     background-color: $dark-background;
     color: $dark-text;
 
     a {
-      color: $dark-accent; // Dark theme color for links
+      color: $dark-accent; //      color: $dark-accent; // Dark theme color for links
     }
 
     header h1 {
@@ -132,4 +159,3 @@ code {
     }
   }
 }
-

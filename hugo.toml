@@ -26,3 +26,8 @@ theme='ashistrytheme'
   name ='RSS'
   url = '/posts/index.xml'
   weight= 40
+
+  [[menus.main]] 
+  name='Contact'
+  url = 'mailto:ashistry@proton.me'
+  weight=50
