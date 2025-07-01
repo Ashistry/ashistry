@@ -2,8 +2,8 @@
 date = '2025-06-25T21:04:44+02:00'
 draft = true
 title = 'Recreating SCP-079'
-tags = 'sbc,raspberry pi,SCP,tech,hardware,software,maker'
-summary = ''
+tags = 'sbc,raspberry pi,SCP,tech,hardware,software,creative'
+summary='For a possible display at the DCC DSCP booth, I used a raspi to create a text-adventure style chatbot replica of SCP-079!'
 +++
 
 ## 1. What is this project? And why?
@@ -15,7 +15,7 @@ The idea is that people will be able to ask it questions, and it will respond wi
 
 This post was written during the process and edited at various stages.
 
-If you want to check out the repo for this project, here it is on [gitlab](https://gitlab.com/ashistry/scp-079-raspberry-pi-recreation) under the CC-
+If you want to check out the repo for this project, [here it is on gitlab](https://gitlab.com/ashistry/scp-079-raspberry-pi-recreation).
 
 ## 2. The hardware
 
@@ -36,11 +36,13 @@ This means we are working with the following specs (irrelevant ones are not list
 - Micro USB power
 - 65mm x 30mm
 
-In terms of display, I feel the [full official raspi monitor](https://shop.pimoroni.com/products/raspberry-pi-monitor?variant=55066546045307) is a good idea. At first I thought it might be excessive, but if it **is** in the booth, it's nice for it to be a bit eye-catching. I'll probably make a custom SCP themed case for it rather than stick with the default look.
+In terms of display, I feel the [full official raspi monitor](https://shop.pimoroni.com/products/raspberry-pi-monitor?variant=55066546045307) is a good idea. At first I thought it might be excessive, but if it **is** in the booth, it's nice for it to be a bit eye-catching. I'll probably make a custom SCP themed case for it rather than stick with the default look. 
 
 Power-wise, As a booth user, You can rent a power connection for 75 euros at DCC. So I'm not worried about that, but ideally it could run off a battery.
 
 I considered E-Ink instead for power consumption reasons, but that gets expensive fast and is not the look I'm going for, making renting the power still more appealing. The battery idea is nice, but impractical, so I will be assuming **rented power.**
+
+I already own a USB hub for my pi, so a keyboard connection is taken care of.
 
 ## 3. The software
 
@@ -69,8 +71,8 @@ I've decided on JSON as the format for the dataset as it is easy for humans (me)
     "questions": [
         {
             "question": "What is your name?",
-            "aliases": ["What's your name?", "Name?"],
-            "answers": ["079.", "Am 079.","SCP-079.","Irrelevant."]
+            "aliases": ["What's your name?", "Name?","Who are you?"],
+            "answers": ["079.","SCP-079.","Irrelevant."]
         },
         {
             "question": "How are you?",
@@ -80,3 +82,27 @@ I've decided on JSON as the format for the dataset as it is easy for humans (me)
     ]
 }
 ```
+
+For the python script, I got some help from AI for the base, as python is not something I'm great at (yet), I've only really programmed within the JS/TS ecosystem.
+I then adjusted things as needed from there.
+I tested on my pc while Waiting for the monitor to arrive.
+
+### 3.2 The code
+
+I won't go over the whole process here. But I used the effects made by [Chris Greening on dev.to](https://dev.to/chrisgreening/simulating-simple-crt-and-glitch-effects-in-pygame-1mf1), And applied them, excluding the textbox for the glitch, and toning everything down a little.
+
+I also implemented string cleaning so capital letters or special characters were ignored altogether, and used string distance measurement to allow for some typos (specifically the Levenshtein method).
+
+In the future I might change the appearance a bit, especially the text box, but for now this is totally ok!
+
+PLACEHOLDER: INSERT SCREENSHOT
+
+## 4. Adjusting for the monitor
+
+I got the monitor! This means running the program on my pi connected to the monitor, with a USB hub for the keyboard.
+While waiting for the monitor, I wrote some more questions and answers.
+I adjusted the program to use fullscreen, which is easier on the raspian default DE than on my PC's DE (Sway).
+
+## 5. Aesthetic adjustments
+
+I adjusted the textbox by removing the background altogether (a.k.a made it the same color as the screen background). I also made the > symbol unable to be deleted.
