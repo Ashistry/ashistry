@@ -10,6 +10,8 @@ tags = 'tutorials,webdev,frontend,html,css,javascript'
 
 summary = 'In this guide, you will follow along with me as I create a basic hugo theme from scratch. I talk about some functionalities you can add and provide a word of advice on accessibility. Some basic webdev knowledge is required!'
 
+outputs = ['html','rss']
+
 +++
 
 Hello, as you may know, my name is Ash! Just like you, I want to create my own theme for my Hugo site. I've started a version of this article before where I used Ananke as a base, but frankly, it got too chaotic for my taste fast.

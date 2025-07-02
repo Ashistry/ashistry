@@ -22,3 +22,4 @@ title = 'My New Hugo Site'
     endLevel = 10
 [build]
   writeStats = true
+
