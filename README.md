@@ -1,7 +1,10 @@
 
 == I Am Using GitHub Under Protest ==
 
-My repositories on Github will not be updated. Instead, I can be found on Codeberg: [https://codeberg.org/ashistry](https://codeberg.org/ashistry)
+My repositories on Github will not be updated. Instead:
+
+I can be found on Codeberg: [https://codeberg.org/ashistry](https://codeberg.org/ashistry)
+And on Gitlab: [https://gitlab.com/ashistry](https://gitlab.com/ashistry)
 
 I currently host some projects on github.  This is not ideal; GitHub is a
 proprietary, trade-secret system that is not Free and Open Souce Software
