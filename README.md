@@ -1,9 +1,9 @@
 
 == I Am Using GitHub Under Protest ==
 
-Please consider my Codeberg instead: [https://codeberg.org/ashistry](https://codeberg.org/ashistry)
+My repositories on Github will not be updated. Instead, I can be found on Codeberg: [https://codeberg.org/ashistry](https://codeberg.org/ashistry)
 
-I currently host on github.  This is not ideal; GitHub is a
+I currently host some projects on github.  This is not ideal; GitHub is a
 proprietary, trade-secret system that is not Free and Open Souce Software
 (FOSS).  I am deeply concerned about using a proprietary system like GitHub
 to develop FOSS projects. I urge you to read about the
