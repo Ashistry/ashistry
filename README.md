@@ -1,2 +1,17 @@
-![image](https://camo.githubusercontent.com/2a80d86b22a35c843c34a75f1bd358da2b731362061161bb322be35ce7812f91/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f417263685f4c696e75782d3137393344313f7374796c653d666f722d7468652d6261646765266c6f676f3d617263682d6c696e7578266c6f676f436f6c6f723d7768697465)
-![image](https://camo.githubusercontent.com/6890201558a3730642885f3fd3b8a680dee27e1c26e0c34c0da07ace2a2e7ab1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c69627265576f6c662d3030414346463f7374796c653d666f722d7468652d6261646765266c6f676f3d6c69627265776f6c66266c6f676f436f6c6f723d7768697465)
+Note: I encourage you to add the below to your existing `README.md` on your GitHub project.
+
+== I Am Using GitHub Under Protest ==
+
+I currently host on github.  This is not ideal; GitHub is a
+proprietary, trade-secret system that is not Free and Open Souce Software
+(FOSS).  I am deeply concerned about using a proprietary system like GitHub
+to develop FOSS projects. I urge you to read about the
+[Give up GitHub](https://GiveUpGitHub.org) campaign from
+[the Software Freedom Conservancy](https://sfconservancy.org) to understand
+some of the reasons why GitHub is not a good place to host FOSS projects.
+
+Any use of my code by GitHub Copilot, past or present, is done
+without my permission.  I do not consent to GitHub's use of this project's
+code in Copilot.
+
+![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/static/img/GiveUpGitHub.png)
