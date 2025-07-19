@@ -1,6 +1,7 @@
 
 == I Am Using GitHub Under Protest ==
 
+Please consider my Codeberg instead: [https://codeberg.org/ashistry](https://codeberg.org/ashistry)
 I currently host on github.  This is not ideal; GitHub is a
 proprietary, trade-secret system that is not Free and Open Souce Software
 (FOSS).  I am deeply concerned about using a proprietary system like GitHub
