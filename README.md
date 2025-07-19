@@ -17,5 +17,3 @@ some of the reasons why GitHub is not a good place to host FOSS projects.
 
 Any use of my code by GitHub Copilot, past or present, is done
 without my permission.  I do not consent to GitHub's use of my code in Copilot.
-
-![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/static/img/GiveUpGitHub.png)
