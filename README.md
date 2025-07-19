@@ -1,4 +1,3 @@
-Note: I encourage you to add the below to your existing `README.md` on your GitHub project.
 
 == I Am Using GitHub Under Protest ==
 
